@@ -1,6 +1,6 @@
 ## Logiciel de vente
 
-### Présentation des fonctionnalités du logiciel\
+### Présentation des fonctionnalités du logiciel
 
 **Accueil**\
 Permet de voir sous quel profil on est connecté et se déconnecter
