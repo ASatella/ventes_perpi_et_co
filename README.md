@@ -20,13 +20,7 @@ Permet de générer des jeux d'essai et de voir une liste du personnel
 **Statistiques** _Reservé aux administrateurs_\
 Permet d'avoir des statistiques comme le nombre total de produit vendu
 
-### Installation du logiciel
+### Installation et utilisation du logiciel
 
-**Etape 1**
-
-### Utilisation du logiciel
-
-
-### Informations supplémentaires
-
-Pour des informations plus détaillées concernant l'installation ou l'utilisation du logiciel : [Wiki](https://github.com/ASatella/ventes_perpi_et_co/wiki)
+**Wiki**\
+Visitez le wiki pour les instructions d'installation et d'utilisation
