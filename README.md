@@ -1,7 +1,7 @@
 ### Présentation des fonctionnalités du logiciel
 
 **Accueil**
-Permet d'avoir sous quel profil on est connecté et se déconnecter
+Permet de voir sous quel profil on est connecté et se déconnecter
 
 **Gestion client**
 Permet de voir, d'ajouter et de modifier les clients enregistrés
