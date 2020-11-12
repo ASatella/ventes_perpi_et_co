@@ -10,7 +10,7 @@ Permet de voir, d'ajouter et de modifier les clients enregistrés
 Permet de voir, d'ajouter et de modifier des produits enregistrés
 
 **Ventes PAD**
-Permet de voir les ventes des produits ainsiq que leur nombre effectués aux client
+Permet de voir les ventes des produits ainsi que leur nombre effectués aux client
 
 **Actions** _Reservé aux administrateurs_
 Permet de générer des jeux d'essai et de voir une liste du personnel
