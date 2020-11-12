@@ -1,4 +1,4 @@
-## Logiciel de vente
+## Logiciel de vente 🛒
 
 ### Présentation des fonctionnalités du logiciel
 
