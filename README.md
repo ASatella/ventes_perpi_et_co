@@ -23,4 +23,4 @@ Permet d'avoir des statistiques comme le nombre total de produit vendu
 ### Installation et utilisation du logiciel
 
 **Wiki**\
-Visitez le wiki pour les instructions d'installation et d'utilisation
+Visitez le [**wiki**](https://github.com/ASatella/ventes_perpi_et_co/wiki/) pour les instructions d'installation et d'utilisation
