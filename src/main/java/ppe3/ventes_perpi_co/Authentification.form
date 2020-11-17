@@ -26,63 +26,117 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabelEtat" alignment="1" min="-2" pref="229" max="-2" attributes="0"/>
-                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jTextFieldUtilisateurPersonnel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jPasswordFieldMDPPersonnel" alignment="0" min="-2" pref="68" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabelUtilisateurSGBD" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabelUtilisateurPersonnel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabelMDPPersonnel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabelMdpSGBD" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jTextFieldUtilisateurSGBD" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="jPasswordFieldMdpSGBD" alignment="0" min="-2" pref="68" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabelNomBDD" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabelPort" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabelNomServeur" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="33" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jTextFieldNomServeur" min="-2" pref="71" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldNomBDD" min="-2" pref="71" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldPort" min="-2" pref="71" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
                           <Component id="jLabelTitre" min="-2" pref="210" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabelUtilisateur" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelMDP" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jButtonConnexion" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jLabelEtat" alignment="1" min="-2" pref="229" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jTextFieldUtilisateur" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jPasswordFieldMDP" alignment="0" min="-2" pref="68" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                              <Component id="jButtonQuitter" min="-2" pref="73" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                          <Component id="jButtonConnexion" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="jButtonQuitter" min="-2" pref="73" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
               <Component id="jLabelTitre" min="-2" pref="40" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabelUtilisateur" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldUtilisateur" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelNomServeur" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldNomServeur" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabelMDP" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jPasswordFieldMDP" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelPort" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldPort" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jButtonConnexion" min="-2" pref="23" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelNomBDD" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldNomBDD" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelUtilisateurSGBD" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldUtilisateurSGBD" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelMdpSGBD" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jPasswordFieldMdpSGBD" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelUtilisateurPersonnel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldUtilisateurPersonnel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelMDPPersonnel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jPasswordFieldMDPPersonnel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jButtonConnexion" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
               <Component id="jLabelEtat" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jButtonQuitter" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jButtonQuitter" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -98,19 +152,19 @@
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelUtilisateur">
+    <Component class="javax.swing.JLabel" name="jLabelUtilisateurPersonnel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nom d&apos;utilisateur"/>
+        <Property name="text" type="java.lang.String" value="Nom d&apos;utilisateur personnel"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldUtilisateur">
+    <Component class="javax.swing.JTextField" name="jTextFieldUtilisateurPersonnel">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelMDP">
+    <Component class="javax.swing.JLabel" name="jLabelMDPPersonnel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Mot de passe"/>
+        <Property name="text" type="java.lang.String" value="Mot de passe personnel"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="jPasswordFieldMDP">
+    <Component class="javax.swing.JPasswordField" name="jPasswordFieldMDPPersonnel">
     </Component>
     <Component class="javax.swing.JButton" name="jButtonConnexion">
       <Properties>
@@ -133,6 +187,41 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonQuitterActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelNomBDD">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nom de la BDD"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldNomServeur">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelUtilisateurSGBD">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nom d&apos;utilisateur SGBD"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldPort">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldUtilisateurSGBD">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldNomBDD">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelMdpSGBD">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mot de passe SGBD"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="jPasswordFieldMdpSGBD">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelNomServeur">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="IP/Nom du serveur"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelPort">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Port"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

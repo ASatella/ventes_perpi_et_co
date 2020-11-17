@@ -27,11 +27,11 @@ public class DAO {
     private static String motDePasse = "root";
      */
 
-    private static String nomServeur = "127.0.0.1";
-    private static String port = "3306";
-    private static String nomBdd = "ventes";
-    private static String nomUtilisateur = "roota";
-    private static String motDePasse = "roota";
+    private static String nomServeur;
+    private static String port;
+    private static String nomBdd;
+    private static String nomUtilisateur;
+    private static String motDePasse;
 
     private static String chaineConnexion;
 
@@ -115,4 +115,46 @@ public class DAO {
         return 0;
 
     }
+
+    /**
+     * Methode setter 'setNomServeur' pour définir un ip/nom
+     * @param nomServeur Nom ou adresse ip du serveur
+     */
+    public static void setNomServeur(String nomServeur) {
+        DAO.nomServeur = nomServeur;
+    }
+
+    /**
+     * Méthode setter 'setSetPort' pour définir un port
+     * @param port Port
+     */
+    public static void setPort(String port) {
+        DAO.port = port;
+    }
+
+    /**
+     * Méthode setter 'setNomBdd' pour définir le nom de la base de donnée sur laquelle on va se connecter
+     * @param nomBdd Nom de la base de données
+     */
+    public static void setNomBdd(String nomBdd) {
+        DAO.nomBdd = nomBdd;
+    }
+
+    /**
+     * Méthode setter 'setNomUtilisateur' pour définir le nom d'utilisateur permettant de se connecter au SGBD
+     * @param nomUtilisateur Nom d'utilisateur pour se connecter au SGBD
+     */
+    public static void setNomUtilisateur(String nomUtilisateur) {
+        DAO.nomUtilisateur = nomUtilisateur;
+    }
+
+    /**
+     * Méthode setter 'setMotDePasse' pour définir le mot de passe permettant de se connecter au SGBD
+     * @param motDePasse Mot de passe pour se connecter au SGBD
+     */
+    public static void setMotDePasse(String motDePasse) {
+        DAO.motDePasse = motDePasse;
+    }
+    
+    
 }

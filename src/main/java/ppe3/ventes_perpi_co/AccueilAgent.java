@@ -16,7 +16,6 @@ public class AccueilAgent extends javax.swing.JFrame {
      */
     public AccueilAgent() {
         initComponents();
-        this.setLocationRelativeTo(null);
     }
 
     /**

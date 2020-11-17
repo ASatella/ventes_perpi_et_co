@@ -16,7 +16,6 @@ public class AccueilAdmin extends javax.swing.JFrame {
      */
     public AccueilAdmin() {
         initComponents();
-        this.setLocationRelativeTo(null);
     }
 
     /**
