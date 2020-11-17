@@ -202,16 +202,16 @@ public class Authentification extends javax.swing.JFrame {
         String mdpSgbd = jPasswordFieldMDPSgbd.getText();
 
         try {
+            DAO.setNomServeur(ipServeur);
+            DAO.setNomBdd(nomBdd);
+            DAO.setPort(port);
+            DAO.setNomUtilisateur(nomUser);
+            DAO.setMotDePasse(mdp);
             DAO monDAO = DAO.getInstance();
             // Vérifie si la connexion au SGBD est effectuée et vérifie si les champs du nom d'utilisateur et du mdp sont remplis
             if (monDAO != null) {
                 if (!("".equals(ipServeur) && "".equals(port) && "".equals(nomBdd) && "".equals(nomUserSgbd) && "".equals(mdpSgbd)))
                 {
-                    DAO.setNomServeur(ipServeur);
-                    DAO.setNomBdd(nomBdd);
-                    DAO.setPort(port);
-                    DAO.setNomUtilisateur(nomUser);
-                    DAO.setMotDePasse(mdp);
                     if (!("".equals(nomUser) && "".equals(mdp))) {
                         ResultSet connexionPersonnel = monDAO.requeteSelection("SELECT nomuser, mdp FROM personnel WHERE nomuser='" + nomUser + "' AND mdp='" + mdp + "'");
                         // Parcours la table et si les informations rentrées dans les champs sont trouvées dans la BDD récupère l'id du profil du personnel voulant se connecter
