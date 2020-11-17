@@ -195,23 +195,18 @@ public class Authentification extends javax.swing.JFrame {
     private void jButtonConnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConnexionActionPerformed
         String nomUser = jTextFieldUtilisateur.getText();
         String mdp = jPasswordFieldMDP.getText();
-        String ipServeur = jTextFieldIpServeur.getText();
-        String port = jTextFieldPort.getText();
-        String nomBdd = jTextFieldNomBdd.getText();
-        String nomUserSgbd = jTextFieldUtilisateurSgbd.getText();
-        String mdpSgbd = jPasswordFieldMDPSgbd.getText();
 
         try {
-            DAO.setNomServeur(ipServeur);
-            DAO.setNomBdd(nomBdd);
-            DAO.setPort(port);
-            DAO.setNomUtilisateur(nomUser);
-            DAO.setMotDePasse(mdp);
             DAO monDAO = DAO.getInstance();
             // Vérifie si la connexion au SGBD est effectuée et vérifie si les champs du nom d'utilisateur et du mdp sont remplis
             if (monDAO != null) {
-                if (!("".equals(ipServeur) && "".equals(port) && "".equals(nomBdd) && "".equals(nomUserSgbd) && "".equals(mdpSgbd)))
+                if (!("".equals(jTextFieldIpServeur.getText()) && "".equals(jTextFieldPort.getText()) && "".equals(jTextFieldNomBdd.getText()) && "".equals(jTextFieldUtilisateurSgbd.getText()) && "".equals(jPasswordFieldMDPSgbd.getText())))
                 {
+                    DAO.setNomServeur(jTextFieldIpServeur.getText());
+                    DAO.setNomBdd(jTextFieldPort.getText());
+                    DAO.setPort(jTextFieldNomBdd.getText());
+                    DAO.setNomUtilisateur(jTextFieldUtilisateurSgbd.getText());
+                    DAO.setMotDePasse(jPasswordFieldMDPSgbd.getText());
                     if (!("".equals(nomUser) && "".equals(mdp))) {
                         ResultSet connexionPersonnel = monDAO.requeteSelection("SELECT nomuser, mdp FROM personnel WHERE nomuser='" + nomUser + "' AND mdp='" + mdp + "'");
                         // Parcours la table et si les informations rentrées dans les champs sont trouvées dans la BDD récupère l'id du profil du personnel voulant se connecter
