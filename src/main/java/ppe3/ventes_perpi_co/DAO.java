@@ -19,11 +19,19 @@ import java.util.logging.Logger;
  */
 public class DAO {
 
-    private static String nomServeur;
-    private static String port;
-    private static String nomBdd;
-    private static String nomUtilisateur;
-    private static String motDePasse;
+    /*
+    private static String nomServeur = "10.0.10.141";
+    private static String port = "3306";
+    private static String nomBdd = "ventes";
+    private static String nomUtilisateur = "root";
+    private static String motDePasse = "root";
+     */
+
+    private static String nomServeur = "127.0.0.1";
+    private static String port = "3306";
+    private static String nomBdd = "ventes";
+    private static String nomUtilisateur = "roota";
+    private static String motDePasse = "roota";
 
     private static String chaineConnexion;
 
@@ -106,45 +114,5 @@ public class DAO {
         }
         return 0;
 
-    }
-
-    /**
-     * Défini le nom/ip du serveur
-     * @param nomServeur Nom ou ip du serveur
-     */
-    public static void setNomServeur(String nomServeur) {
-        DAO.nomServeur = nomServeur;
-    }
-
-    /**
-     * Défini le port (ex: MySQL)
-     * @param port Port du serveur
-     */
-    public static void setPort(String port) {
-        DAO.port = port;
-    }
-
-    /**
-     * Défini le nom de la BDD
-     * @param nomBdd Nom de la BDD
-     */
-    public static void setNomBdd(String nomBdd) {
-        DAO.nomBdd = nomBdd;
-    }
-
-    /**
-     * Défini le nom d'utilisateur SGBD
-     * @param nomUtilisateur Nom d'utlisateur SGBD
-     */
-    public static void setNomUtilisateur(String nomUtilisateur) {
-        DAO.nomUtilisateur = nomUtilisateur;
-    }
-
-    /**
-     * Défini le mot de passe SGBD
-     * @param motDePasse Mot de passe SGBD
-     */
-    public static void setMotDePasse(String motDePasse) {
-        DAO.motDePasse = motDePasse;
     }
 }

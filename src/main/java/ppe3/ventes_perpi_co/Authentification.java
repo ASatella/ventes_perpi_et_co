@@ -41,16 +41,6 @@ public class Authentification extends javax.swing.JFrame {
         jButtonConnexion = new javax.swing.JButton();
         jLabelEtat = new javax.swing.JLabel();
         jButtonQuitter = new javax.swing.JButton();
-        jLabelUtilisateurSgdb = new javax.swing.JLabel();
-        jTextFieldUtilisateurSgbd = new javax.swing.JTextField();
-        jPasswordFieldMDPSgbd = new javax.swing.JPasswordField();
-        jLabelMDPSgdb = new javax.swing.JLabel();
-        jTextFieldNomBdd = new javax.swing.JTextField();
-        jLabelNomBdd = new javax.swing.JLabel();
-        jTextFieldPort = new javax.swing.JTextField();
-        jLabelPort = new javax.swing.JLabel();
-        jTextFieldIpServeur = new javax.swing.JTextField();
-        jLabelIpServeur = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Perpi&Co");
@@ -61,15 +51,9 @@ public class Authentification extends javax.swing.JFrame {
         jLabelTitre.setText("Perpi&Co - Authentification");
         jLabelTitre.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabelUtilisateur.setText("Nom d'utilisateur personnel");
+        jLabelUtilisateur.setText("Nom d'utilisateur");
 
-        jTextFieldUtilisateur.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldUtilisateurActionPerformed(evt);
-            }
-        });
-
-        jLabelMDP.setText("Mot de passe personnel");
+        jLabelMDP.setText("Mot de passe");
 
         jButtonConnexion.setText("Se connecter");
         jButtonConnexion.addActionListener(new java.awt.event.ActionListener() {
@@ -88,90 +72,41 @@ public class Authentification extends javax.swing.JFrame {
             }
         });
 
-        jLabelUtilisateurSgdb.setText("Nom d'utilsateur SGBD");
-
-        jLabelMDPSgdb.setText("Mot de passe SGBD");
-
-        jLabelNomBdd.setText("Nom de la BDD");
-
-        jLabelPort.setText("Port");
-
-        jLabelIpServeur.setText("IP/Nom du serveur");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(jButtonQuitter, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelEtat, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(67, 67, 67)
-                                .addComponent(jButtonConnexion))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabelTitre, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelUtilisateur)
-                            .addComponent(jLabelMDPSgdb))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPasswordFieldMDPSgbd, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldUtilisateur, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabelIpServeur))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabelPort))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelMDP)
-                            .addComponent(jLabelUtilisateurSgdb)
-                            .addComponent(jLabelNomBdd))
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldNomBdd, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldUtilisateurSgbd, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldPort, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldIpServeur, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPasswordFieldMDP, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabelEtat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(19, 19, 19)
+                            .addComponent(jLabelTitre, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(28, 28, 28)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabelUtilisateur)
+                                .addComponent(jLabelMDP))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTextFieldUtilisateur)
+                                .addComponent(jPasswordFieldMDP, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(65, 65, 65)
+                            .addComponent(jButtonConnexion))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonQuitter, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(87, 87, 87))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelTitre, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelIpServeur)
-                    .addComponent(jTextFieldIpServeur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelPort)
-                    .addComponent(jTextFieldPort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNomBdd)
-                    .addComponent(jTextFieldNomBdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelUtilisateurSgdb)
-                    .addComponent(jTextFieldUtilisateurSgbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPasswordFieldMDPSgbd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelMDPSgdb))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelUtilisateur)
@@ -185,60 +120,50 @@ public class Authentification extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelEtat)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonQuitter)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addComponent(jButtonQuitter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonConnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConnexionActionPerformed
-        String nomUser = jTextFieldUtilisateur.getText();
+        String nomuser = jTextFieldUtilisateur.getText();
         String mdp = jPasswordFieldMDP.getText();
 
         try {
             DAO monDAO = DAO.getInstance();
             // Vérifie si la connexion au SGBD est effectuée et vérifie si les champs du nom d'utilisateur et du mdp sont remplis
             if (monDAO != null) {
-                if (!("".equals(jTextFieldIpServeur.getText()) && "".equals(jTextFieldPort.getText()) && "".equals(jTextFieldNomBdd.getText()) && "".equals(jTextFieldUtilisateurSgbd.getText()) && "".equals(jPasswordFieldMDPSgbd.getText())))
-                {
-                    DAO.setNomServeur(jTextFieldIpServeur.getText());
-                    DAO.setNomBdd(jTextFieldPort.getText());
-                    DAO.setPort(jTextFieldNomBdd.getText());
-                    DAO.setNomUtilisateur(jTextFieldUtilisateurSgbd.getText());
-                    DAO.setMotDePasse(jPasswordFieldMDPSgbd.getText());
-                    if (!("".equals(nomUser) && "".equals(mdp))) {
-                        ResultSet connexionPersonnel = monDAO.requeteSelection("SELECT nomuser, mdp FROM personnel WHERE nomuser='" + nomUser + "' AND mdp='" + mdp + "'");
-                        // Parcours la table et si les informations rentrées dans les champs sont trouvées dans la BDD récupère l'id du profil du personnel voulant se connecter
-                        if (connexionPersonnel.next()) {
-                            ResultSet requeteProfil = monDAO.requeteSelection("SELECT id_profil FROM personnel WHERE nomuser='" + nomUser + "' AND mdp='" + mdp + "'");
-                            requeteProfil.next();
-                            String profilPersonnel = requeteProfil.getString(1);
-                            /* Vérifie en fonction de l'id du profil si c'est un agent ou un admin qui essaye de se connecter
-                            Utilise une méthode 'setIdPersonnel' pour pouvoir stocker l'id du personnel voulant se connecter */
-                            if ("1".equals(profilPersonnel)) {
-                                AccueilAgent accueilAgent = new AccueilAgent();
-                                accueilAgent.setVisible(true);
-                                ResultSet requeteIdPersonnel = monDAO.requeteSelection("SELECT id_personnel FROM personnel WHERE nomuser='" + nomUser + "' AND mdp='" + mdp + "'");
-                                requeteIdPersonnel.next();
-                                accueilAgent.setIdPersonnel(requeteIdPersonnel.getString(1));
-                                Authentification.this.dispose();
-                            } else {
-                                AccueilAdmin accueilAdmin = new AccueilAdmin();
-                                accueilAdmin.setVisible(true);
-                                ResultSet requeteIdPersonnel = monDAO.requeteSelection("SELECT id_personnel FROM personnel WHERE nomuser='" + nomUser + "' AND mdp='" + mdp + "'");
-                                requeteIdPersonnel.next();
-                                accueilAdmin.setIdPersonnel(requeteIdPersonnel.getString(1));
-                                Authentification.this.dispose();
-                            }
+                if (!("".equals(nomuser) && "".equals(mdp))) {
+                    ResultSet connexionPersonnel = monDAO.requeteSelection("SELECT nomuser, mdp FROM personnel WHERE nomuser='" + nomuser + "' AND mdp='" + mdp + "'");
+                    // Parcours la table et si les informations rentrées dans les champs sont trouvées dans la BDD récupère l'id du profil du personnel voulant se connecter
+                    if (connexionPersonnel.next()) {
+                        ResultSet requeteProfil = monDAO.requeteSelection("SELECT id_profil FROM personnel WHERE nomuser='" + nomuser + "' AND mdp='" + mdp + "'");
+                        requeteProfil.next();
+                        String profilPersonnel = requeteProfil.getString(1);
+                        /* Vérifie en fonction de l'id du profil si c'est un agent ou un admin qui essaye de se connecter
+                        Utilise une méthode 'setIdPersonnel' pour pouvoir stocker l'id du personnel voulant se connecter */
+                        if ("1".equals(profilPersonnel)) {
+                            AccueilAgent accueilAgent = new AccueilAgent();
+                            accueilAgent.setVisible(true);
+                            ResultSet requeteIdPersonnel = monDAO.requeteSelection("SELECT id_personnel FROM personnel WHERE nomuser='" + nomuser + "' AND mdp='" + mdp + "'");
+                            requeteIdPersonnel.next();
+                            accueilAgent.setIdPersonnel(requeteIdPersonnel.getString(1));
+                            Authentification.this.dispose();
                         } else {
-                            jLabelEtat.setText("Veuillez vérifier les informations saisies");
+                            AccueilAdmin accueilAdmin = new AccueilAdmin();
+                            accueilAdmin.setVisible(true);
+                            ResultSet requeteIdPersonnel = monDAO.requeteSelection("SELECT id_personnel FROM personnel WHERE nomuser='" + nomuser + "' AND mdp='" + mdp + "'");
+                            requeteIdPersonnel.next();
+                            accueilAdmin.setIdPersonnel(requeteIdPersonnel.getString(1));
+                            Authentification.this.dispose();
                         }
                     } else {
-                        jLabelEtat.setText("Veuillez remplir les champs");
+                        jLabelEtat.setText("Veuillez vérifier les informations saisies");
                     }
                 } else {
-                    jLabelEtat.setText("Veuillez remplir tout les champs");
+                    jLabelEtat.setText("Veuillez remplir les champs");
                 }
             }
         } catch (SQLException ex) {
@@ -249,10 +174,6 @@ public class Authentification extends javax.swing.JFrame {
     private void jButtonQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuitterActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonQuitterActionPerformed
-
-    private void jTextFieldUtilisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUtilisateurActionPerformed
-
-    }//GEN-LAST:event_jTextFieldUtilisateurActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,20 +214,10 @@ public class Authentification extends javax.swing.JFrame {
     private javax.swing.JButton jButtonConnexion;
     private javax.swing.JButton jButtonQuitter;
     private javax.swing.JLabel jLabelEtat;
-    private javax.swing.JLabel jLabelIpServeur;
     private javax.swing.JLabel jLabelMDP;
-    private javax.swing.JLabel jLabelMDPSgdb;
-    private javax.swing.JLabel jLabelNomBdd;
-    private javax.swing.JLabel jLabelPort;
     private javax.swing.JLabel jLabelTitre;
     private javax.swing.JLabel jLabelUtilisateur;
-    private javax.swing.JLabel jLabelUtilisateurSgdb;
     private javax.swing.JPasswordField jPasswordFieldMDP;
-    private javax.swing.JPasswordField jPasswordFieldMDPSgbd;
-    private javax.swing.JTextField jTextFieldIpServeur;
-    private javax.swing.JTextField jTextFieldNomBdd;
-    private javax.swing.JTextField jTextFieldPort;
     private javax.swing.JTextField jTextFieldUtilisateur;
-    private javax.swing.JTextField jTextFieldUtilisateurSgbd;
     // End of variables declaration//GEN-END:variables
 }
