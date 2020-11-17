@@ -493,17 +493,16 @@ public class GestionPAD extends javax.swing.JPanel {
             jDialogAjoutProduit.setLocationRelativeTo(this);
             DefaultComboBoxModel laComboBoxCategorie = (DefaultComboBoxModel) jComboBoxChoixCategorie.getModel();
             laComboBoxCategorie.removeAllElements();
-            ResultSet lesCategories = DAO.getInstance().requeteSelection("SELECT * FROM categorie");
-            while (lesCategories.next()) {
-                laComboBoxCategorie.addElement(lesCategories.getString(2));
+            ResultSet uneCategorie = DAO.getInstance().requeteSelection("SELECT * FROM categorie");
+            while (uneCategorie.next()) {
+                laComboBoxCategorie.addElement(uneCategorie.getString(2));
             }
             DefaultComboBoxModel laComboBoxPopularite = (DefaultComboBoxModel) jComboBoxPopulariteProduit.getModel();
             laComboBoxPopularite.removeAllElements();
-            laComboBoxPopularite.addElement("*");
-            laComboBoxPopularite.addElement("**");
-            laComboBoxPopularite.addElement("***");
-            laComboBoxPopularite.addElement("****");
-            laComboBoxPopularite.addElement("*****");
+            ResultSet unePopularite = DAO.getInstance().requeteSelection("SELECT popularite_produit FROM produit");
+            while (unePopularite.next()) {
+                laComboBoxPopularite.addElement(unePopularite.getString(1));
+            }
         } catch (SQLException ex) {
             Logger.getLogger(GestionPAD.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -519,18 +518,17 @@ public class GestionPAD extends javax.swing.JPanel {
                 jDialogModifProduit.setLocationRelativeTo(this);
                 DefaultComboBoxModel laComboBoxPopularite = (DefaultComboBoxModel) jComboBoxMPopulariteProduit.getModel();
                 laComboBoxPopularite.removeAllElements();
-                laComboBoxPopularite.addElement("*");
-                laComboBoxPopularite.addElement("**");
-                laComboBoxPopularite.addElement("***");
-                laComboBoxPopularite.addElement("****");
-                laComboBoxPopularite.addElement("*****");
+                ResultSet unePopularite = DAO.getInstance().requeteSelection("SELECT popularite_produit FROM produit");
+                while (unePopularite.next()) {
+                    laComboBoxPopularite.addElement(unePopularite.getString(1));
+                }
                 DefaultComboBoxModel laComboBoxCategorie = (DefaultComboBoxModel) jComboBoxMChoixCategorie.getModel();
                 laComboBoxCategorie.removeAllElements();
                 Integer infoProduit = jListListeProduit.getSelectedIndex();
-                ResultSet lesCategories = DAO.getInstance().requeteSelection("SELECT * FROM categorie");
+                ResultSet uneCategorie = DAO.getInstance().requeteSelection("SELECT * FROM categorie");
                 ResultSet lesInfoProduit = DAO.getInstance().requeteSelection("SELECT * FROM categorie, produit WHERE produit.id_categorie = categorie.id_categorie");
-                while (lesCategories.next()) {
-                    laComboBoxCategorie.addElement(lesCategories.getString(2));
+                while (uneCategorie.next()) {
+                    laComboBoxCategorie.addElement(uneCategorie.getString(2));
                 }
                 lesInfoProduit.absolute(infoProduit + 1);
                 jTextFieldMNomProduit.setText(lesInfoProduit.getString(4));
@@ -642,7 +640,7 @@ public class GestionPAD extends javax.swing.JPanel {
 
     private void jButtonAjoutCategorieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAjoutCategorieActionPerformed
         jDialogAjoutCategorie.setVisible(true);
-        jDialogAjoutCategorie.setSize(340, 120);
+        jDialogAjoutCategorie.setSize(340, 180);
         jDialogAjoutCategorie.setResizable(false);
         jDialogAjoutCategorie.setLocationRelativeTo(this);
     }//GEN-LAST:event_jButtonAjoutCategorieActionPerformed
@@ -657,9 +655,9 @@ public class GestionPAD extends javax.swing.JPanel {
             jLabelErreurAjoutCategorie.setText("Veuillez rentrer un nom de catégorie");
         } else {
             // Requête SQL pour insérer les valeurs des rentrés dans les champs dans la table 'client'
-            Integer nombreAjoutClient = DAO.getInstance().requeteAction("INSERT INTO categorie VALUES(null, '" + jTextFieldNomCategorie.getText() + "')");
-            System.out.println(nombreAjoutClient);
-            if (nombreAjoutClient > 0) {
+            Integer nombreAjoutCategorie = DAO.getInstance().requeteAction("INSERT INTO categorie VALUES(null, '" + jTextFieldNomCategorie.getText() + "')");
+            System.out.println(nombreAjoutCategorie);
+            if (nombreAjoutCategorie > 0) {
                 JOptionPane.showMessageDialog(jLabelNomCategorie, "Catégorie ajoutée avec succès");
                 System.out.println("Catégorie ajoutée avec succès");
                 jDialogAjoutCategorie.dispose();
