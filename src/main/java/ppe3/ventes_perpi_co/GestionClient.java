@@ -19,8 +19,8 @@ import javax.swing.JOptionPane;
 public class GestionClient extends javax.swing.JPanel {
 
     /**
-     * Creates new form Gestion_client
-     * Rempli la liste dès l'initialisation de la JPanel
+     * Creates new form Gestion_client Rempli la liste dès l'initialisation de
+     * la JPanel
      */
     public GestionClient() {
         initComponents();
@@ -349,7 +349,7 @@ public class GestionClient extends javax.swing.JPanel {
                 jDialogModifClient.setLocationRelativeTo(this);
                 Integer infoClient = jListListeClient.getSelectedIndex();
                 ResultSet lesClients = DAO.getInstance().requeteSelection("SELECT * FROM client");
-                lesClients.absolute(infoClient+1);
+                lesClients.absolute(infoClient + 1);
                 jTextFieldMNomClient.setText(lesClients.getString(2));
                 jTextFieldMPrenomClient.setText(lesClients.getString(3));
                 jTextFieldMCourrielClient.setText(lesClients.getString(4));
@@ -446,6 +446,19 @@ public class GestionClient extends javax.swing.JPanel {
     private void jButtonFermerModifClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFermerModifClientActionPerformed
         jDialogModifClient.dispose();
     }//GEN-LAST:event_jButtonFermerModifClientActionPerformed
+
+    public void remplirListeClient() {
+        try {
+            DefaultListModel leModelClient = (DefaultListModel) jListListeClient.getModel();
+            leModelClient.clear();
+            ResultSet lesClients = DAO.getInstance().requeteSelection("SELECT * FROM client");
+            while (lesClients.next()) {
+                leModelClient.addElement(lesClients.getString(2) + "  " + lesClients.getString(3) + "  " + lesClients.getString(4) + "  " + lesClients.getString(5));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionClient.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

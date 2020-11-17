@@ -57,6 +57,12 @@ public class AccueilAdmin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Perpi&Co - connecté(e) en tant qu'administrateur");
 
+        jTabbedPaneAccueilAgent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPaneAccueilAgentMouseClicked(evt);
+            }
+        });
+
         jLabelTitre.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabelTitre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitre.setText("Perpi&Co - Accueil");
@@ -200,6 +206,14 @@ public class AccueilAdmin extends javax.swing.JFrame {
         Authentification fenetreAuthentification = new Authentification();
         fenetreAuthentification.setVisible(true);
     }//GEN-LAST:event_jButtonDeconnexionActionPerformed
+
+    private void jTabbedPaneAccueilAgentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPaneAccueilAgentMouseClicked
+        // Utilisation des méthodes pour remplir les listes en fonctions des données se trouvant dans la base de données
+        gestionPAD2.remplirListeProduit();
+        gestionClient1.remplirListeClient();
+        ventePAD2.remplirListeVente();
+        actions1.remplirListeAgent();
+    }//GEN-LAST:event_jTabbedPaneAccueilAgentMouseClicked
 
     /**
      * @param args the command line arguments

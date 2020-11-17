@@ -11,7 +11,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -210,6 +209,35 @@ public class VentePAD extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jComboBoxProduitVentesActionPerformed
 
+    /**
+     * Méthode servant à initialiser la liste pour la remplir en fonction des
+     * données présente sur la BDD
+     */
+    public void remplirListeVente() {
+        try {
+            // Rempli la combobox des clients en fonction des informations se trouvant dans la table 'client'
+            DefaultComboBoxModel laComboxBoxClientVente = (DefaultComboBoxModel) jComboBoxClientVentes.getModel();
+            ResultSet lesClientsVentes = DAO.getInstance().requeteSelection("SELECT * FROM client");
+            while (lesClientsVentes.next()) {
+                laComboxBoxClientVente.addElement(lesClientsVentes.getString(2) + "  " + lesClientsVentes.getString(3));
+            }
+            // Rempli la combobox des produits en fonction des informations se trouvant dans la table 'produit'
+            DefaultComboBoxModel laComboBoxProduitVente = (DefaultComboBoxModel) jComboBoxProduitVentes.getModel();
+            ResultSet lesProduitsVentes = DAO.getInstance().requeteSelection("SELECT * FROM produit");
+            while (lesProduitsVentes.next()) {
+                laComboBoxProduitVente.addElement(lesProduitsVentes.getString(2));
+            }
+            // Rempli la liste des ventes en fonction des informations se trouvant dans la table 'vente'
+            DefaultListModel leModelVente = (DefaultListModel) jListListeVente.getModel();
+            leModelVente.clear();
+            ResultSet lesVentes = DAO.getInstance().requeteSelection("SELECT libelle_produit, qte, tarif_produit FROM produit, contenir WHERE produit.id_produit = contenir.id_produit");
+            while (lesVentes.next()) {
+                leModelVente.addElement(lesVentes.getString(1) + "  " + lesVentes.getString(2) + "  " + lesVentes.getString(3));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(VentePAD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonActualiserVentes;

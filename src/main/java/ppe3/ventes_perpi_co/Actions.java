@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -47,6 +47,12 @@ public class Actions extends javax.swing.JPanel {
         jScrollPaneTableauAgent = new javax.swing.JScrollPane();
         jListListeAgent = new javax.swing.JList<>();
         jButtonRechargerTableauAgent = new javax.swing.JButton();
+
+        jTabbedPaneActions.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPaneActionsMouseClicked(evt);
+            }
+        });
 
         jLabelJeuProduit.setText("Nombre à générer");
 
@@ -216,6 +222,26 @@ public class Actions extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButtonRechargerTableauAgentActionPerformed
 
+    private void jTabbedPaneActionsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPaneActionsMouseClicked
+
+    }//GEN-LAST:event_jTabbedPaneActionsMouseClicked
+
+    /**
+     * Méthode servant à initialiser la liste pour la remplir en fonction des
+     * données présente sur la BDD
+     */
+    public void remplirListeAgent() {
+        try {
+            DefaultListModel leModelAgent = (DefaultListModel) jListListeAgent.getModel();
+            leModelAgent.clear();
+            ResultSet lesAgents = DAO.getInstance().requeteSelection("SELECT nomuser, mdp, nom, prenom, email, telephone, libelle_profil FROM personnel, profil WHERE personnel.id_profil = profil.id_profil");
+            while (lesAgents.next()) {
+                leModelAgent.addElement(lesAgents.getString(1) + "  " + lesAgents.getString(2) + "  " + lesAgents.getString(3) + "  " + lesAgents.getString(4) + "  " + lesAgents.getString(5) + "  " + lesAgents.getString(6) + "  " + lesAgents.getString(7));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonGenererJeuCategorie;

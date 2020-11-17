@@ -36,6 +36,13 @@ public class GestionPAD extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialogAjoutCategorie = new javax.swing.JDialog();
+        jTextFieldNomCategorie = new javax.swing.JTextField();
+        jLabelAjoutCategorie = new javax.swing.JLabel();
+        jLabelNomCategorie = new javax.swing.JLabel();
+        jButtonAjoutUneCategorie = new javax.swing.JButton();
+        jButtonFermerAjoutCategorie = new javax.swing.JButton();
+        jLabelErreurAjoutCategorie = new javax.swing.JLabel();
         jDialogAjoutProduit = new javax.swing.JDialog();
         jLabelAjoutProduit = new javax.swing.JLabel();
         jLabelNomProduit = new javax.swing.JLabel();
@@ -71,6 +78,83 @@ public class GestionPAD extends javax.swing.JPanel {
         jButtonAfficherListeProduit = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jListListeProduit = new javax.swing.JList<>();
+        jButtonAjoutCategorie = new javax.swing.JButton();
+
+        jDialogAjoutCategorie.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialogAjoutCategorie.setTitle("Ajout d'un client");
+        jDialogAjoutCategorie.setAlwaysOnTop(true);
+        jDialogAjoutCategorie.setResizable(false);
+
+        jTextFieldNomCategorie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNomCategorieActionPerformed(evt);
+            }
+        });
+
+        jLabelAjoutCategorie.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabelAjoutCategorie.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelAjoutCategorie.setText("Ajouter une catégorie");
+        jLabelAjoutCategorie.setName(""); // NOI18N
+
+        jLabelNomCategorie.setText("Nom de la catégorie:");
+
+        jButtonAjoutUneCategorie.setText("Ajouter");
+        jButtonAjoutUneCategorie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAjoutUneCategorieActionPerformed(evt);
+            }
+        });
+
+        jButtonFermerAjoutCategorie.setText("Fermer");
+        jButtonFermerAjoutCategorie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFermerAjoutCategorieActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialogAjoutCategorieLayout = new javax.swing.GroupLayout(jDialogAjoutCategorie.getContentPane());
+        jDialogAjoutCategorie.getContentPane().setLayout(jDialogAjoutCategorieLayout);
+        jDialogAjoutCategorieLayout.setHorizontalGroup(
+            jDialogAjoutCategorieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogAjoutCategorieLayout.createSequentialGroup()
+                .addGroup(jDialogAjoutCategorieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogAjoutCategorieLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabelNomCategorie)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldNomCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDialogAjoutCategorieLayout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(jButtonFermerAjoutCategorie)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonAjoutUneCategorie)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogAjoutCategorieLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelErreurAjoutCategorie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogAjoutCategorieLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelAjoutCategorie)
+                .addGap(49, 49, 49))
+        );
+        jDialogAjoutCategorieLayout.setVerticalGroup(
+            jDialogAjoutCategorieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogAjoutCategorieLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelAjoutCategorie)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jDialogAjoutCategorieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldNomCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelNomCategorie))
+                .addGap(7, 7, 7)
+                .addComponent(jLabelErreurAjoutCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDialogAjoutCategorieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonFermerAjoutCategorie)
+                    .addComponent(jButtonAjoutUneCategorie))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         jDialogAjoutProduit.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jDialogAjoutProduit.setTitle("Ajout d'un produit");
@@ -351,8 +435,7 @@ public class GestionPAD extends javax.swing.JPanel {
             }
         });
 
-        jListListeProduit.setModel(new DefaultListModel()
-        );
+        jListListeProduit.setModel(new DefaultListModel());
         jListListeProduit.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 jListListeProduitComponentShown(evt);
@@ -360,17 +443,25 @@ public class GestionPAD extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(jListListeProduit);
 
+        jButtonAjoutCategorie.setText("Ajouter une catégorie");
+        jButtonAjoutCategorie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAjoutCategorieActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonAfficherListeProduit, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                    .addComponent(jButtonModifierProduit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonAjoutProduit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonAfficherListeProduit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonModifierProduit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonAjoutCategorie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -378,15 +469,18 @@ public class GestionPAD extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonAjoutProduit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonModifierProduit)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonAfficherListeProduit)))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jButtonAjoutCategorie)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonAjoutProduit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonModifierProduit)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonAfficherListeProduit)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -438,7 +532,7 @@ public class GestionPAD extends javax.swing.JPanel {
                 while (lesCategories.next()) {
                     laComboBoxCategorie.addElement(lesCategories.getString(2));
                 }
-                lesInfoProduit.absolute(infoProduit+1);
+                lesInfoProduit.absolute(infoProduit + 1);
                 jTextFieldMNomProduit.setText(lesInfoProduit.getString(4));
                 jTextFieldMTarifProduit.setText(lesInfoProduit.getString(5));
                 jTextFieldMStockProduit.setText(lesInfoProduit.getString(6));
@@ -467,7 +561,7 @@ public class GestionPAD extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonAfficherListeProduitActionPerformed
 
     private void jListListeProduitComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jListListeProduitComponentShown
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jListListeProduitComponentShown
 
     private void jTextFieldNomProduitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomProduitActionPerformed
@@ -546,11 +640,57 @@ public class GestionPAD extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxMChoixCategorieActionPerformed
 
+    private void jButtonAjoutCategorieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAjoutCategorieActionPerformed
+        jDialogAjoutCategorie.setVisible(true);
+        jDialogAjoutCategorie.setSize(340, 120);
+        jDialogAjoutCategorie.setResizable(false);
+        jDialogAjoutCategorie.setLocationRelativeTo(this);
+    }//GEN-LAST:event_jButtonAjoutCategorieActionPerformed
+
+    private void jTextFieldNomCategorieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomCategorieActionPerformed
+
+    }//GEN-LAST:event_jTextFieldNomCategorieActionPerformed
+
+    private void jButtonAjoutUneCategorieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAjoutUneCategorieActionPerformed
+        // Vérifie si le champ du nom et du prenom sont remplis
+        if ("".equals(jTextFieldNomCategorie.getText())) {
+            jLabelErreurAjoutCategorie.setText("Veuillez rentrer un nom de catégorie");
+        } else {
+            // Requête SQL pour insérer les valeurs des rentrés dans les champs dans la table 'client'
+            Integer nombreAjoutClient = DAO.getInstance().requeteAction("INSERT INTO categorie VALUES(null, '" + jTextFieldNomCategorie.getText() + "')");
+            System.out.println(nombreAjoutClient);
+            if (nombreAjoutClient > 0) {
+                JOptionPane.showMessageDialog(jLabelNomCategorie, "Catégorie ajoutée avec succès");
+                System.out.println("Catégorie ajoutée avec succès");
+                jDialogAjoutCategorie.dispose();
+            }
+        }
+    }//GEN-LAST:event_jButtonAjoutUneCategorieActionPerformed
+
+    private void jButtonFermerAjoutCategorieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFermerAjoutCategorieActionPerformed
+        jDialogAjoutCategorie.dispose();
+    }//GEN-LAST:event_jButtonFermerAjoutCategorieActionPerformed
+
+    public void remplirListeProduit() {
+        try {
+            DefaultListModel leModelProduit = (DefaultListModel) jListListeProduit.getModel();
+            leModelProduit.clear();
+            ResultSet lesProduits = DAO.getInstance().requeteSelection("SELECT libelle_produit, tarif_produit, stock_produit, popularite_produit, libelle_categorie FROM produit, categorie WHERE produit.id_categorie = categorie.id_categorie");
+            while (lesProduits.next()) {
+                leModelProduit.addElement(lesProduits.getString(1) + "  " + lesProduits.getString(2) + "  " + lesProduits.getString(3) + "  " + lesProduits.getString(4) + "  " + lesProduits.getString(5));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionPAD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAfficherListeProduit;
+    private javax.swing.JButton jButtonAjoutCategorie;
     private javax.swing.JButton jButtonAjoutProduit;
     private javax.swing.JButton jButtonAjoutUnProduit;
+    private javax.swing.JButton jButtonAjoutUneCategorie;
+    private javax.swing.JButton jButtonFermerAjoutCategorie;
     private javax.swing.JButton jButtonFermerAjoutProduit;
     private javax.swing.JButton jButtonFermerModifProduit;
     private javax.swing.JButton jButtonModifProduit;
@@ -559,15 +699,19 @@ public class GestionPAD extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> jComboBoxMChoixCategorie;
     private javax.swing.JComboBox<String> jComboBoxMPopulariteProduit;
     private javax.swing.JComboBox<String> jComboBoxPopulariteProduit;
+    private javax.swing.JDialog jDialogAjoutCategorie;
     private javax.swing.JDialog jDialogAjoutProduit;
     private javax.swing.JDialog jDialogModifProduit;
+    private javax.swing.JLabel jLabelAjoutCategorie;
     private javax.swing.JLabel jLabelAjoutProduit;
     private javax.swing.JLabel jLabelCategorie;
+    private javax.swing.JLabel jLabelErreurAjoutCategorie;
     private javax.swing.JLabel jLabelErreurAjoutProduit;
     private javax.swing.JLabel jLabelErreurModifProduit;
     private javax.swing.JLabel jLabelMCategorie;
     private javax.swing.JLabel jLabelMNomProduit;
     private javax.swing.JLabel jLabelModifProduit;
+    private javax.swing.JLabel jLabelNomCategorie;
     private javax.swing.JLabel jLabelNomProduit;
     private javax.swing.JLabel jLabelPopulariteMProduit;
     private javax.swing.JLabel jLabelPopulariteProduit;
@@ -580,6 +724,7 @@ public class GestionPAD extends javax.swing.JPanel {
     private javax.swing.JTextField jTextFieldMNomProduit;
     private javax.swing.JTextField jTextFieldMStockProduit;
     private javax.swing.JTextField jTextFieldMTarifProduit;
+    private javax.swing.JTextField jTextFieldNomCategorie;
     private javax.swing.JTextField jTextFieldNomProduit;
     private javax.swing.JTextField jTextFieldStockProduit;
     private javax.swing.JTextField jTextFieldTarifProduit;

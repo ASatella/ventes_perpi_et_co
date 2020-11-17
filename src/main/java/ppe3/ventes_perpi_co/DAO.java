@@ -18,15 +18,7 @@ import java.util.logging.Logger;
  * @author a.athmane
  */
 public class DAO {
-
-    /*
-    private static String nomServeur = "10.0.10.141";
-    private static String port = "3306";
-    private static String nomBdd = "ventes";
-    private static String nomUtilisateur = "root";
-    private static String motDePasse = "root";
-     */
-
+    
     private static String nomServeur;
     private static String port;
     private static String nomBdd;
@@ -155,6 +147,4 @@ public class DAO {
     public static void setMotDePasse(String motDePasse) {
         DAO.motDePasse = motDePasse;
     }
-    
-    
 }

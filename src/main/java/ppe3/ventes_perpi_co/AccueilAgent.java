@@ -58,6 +58,12 @@ public class AccueilAgent extends javax.swing.JFrame {
         setTitle("Perpi&Co - Connecté(e) en tant qu'agent");
         setResizable(false);
 
+        jTabbedPaneAccueilAgent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPaneAccueilAgentMouseClicked(evt);
+            }
+        });
+
         jLabelTitre.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabelTitre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelTitre.setText("Perpi&Co - Accueil");
@@ -176,6 +182,13 @@ public class AccueilAgent extends javax.swing.JFrame {
         Authentification fenetreAuthentification = new Authentification();
         fenetreAuthentification.setVisible(true);
     }//GEN-LAST:event_jButtonDeconnexionActionPerformed
+
+    private void jTabbedPaneAccueilAgentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPaneAccueilAgentMouseClicked
+        // Utilisation des méthodes pour remplir les listes en fonctions des données se trouvant dans la base de données
+        gestionPAD1.remplirListeProduit();
+        gestionClient1.remplirListeClient();
+        ventePAD2.remplirListeVente();
+    }//GEN-LAST:event_jTabbedPaneAccueilAgentMouseClicked
 
     /**
      * @param args the command line arguments

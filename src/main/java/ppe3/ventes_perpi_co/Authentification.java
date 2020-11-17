@@ -5,8 +5,11 @@
  */
 package ppe3.ventes_perpi_co;
 
+import java.awt.Color;
+import java.awt.font.TextAttribute;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.AttributedString;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -195,43 +198,41 @@ public class Authentification extends javax.swing.JFrame {
         DAO.setNomUtilisateur(jTextFieldUtilisateurSGBD.getText());
         DAO.setMotDePasse(jPasswordFieldMdpSGBD.getText());
 
-        if(!("".equals(jTextFieldNomBDD.getText()) && "".equals(jTextFieldNomServeur.getText()) && "".equals(jTextFieldPort.getText()) && "".equals(jTextFieldUtilisateurSGBD.getText()) && "".equals(jPasswordFieldMdpSGBD.getText()))){
+        if (!("".equals(jTextFieldNomBDD.getText()) && "".equals(jTextFieldNomServeur.getText()) && "".equals(jTextFieldPort.getText()) && "".equals(jTextFieldUtilisateurSGBD.getText()) && "".equals(jPasswordFieldMdpSGBD.getText()))) {
             try {
                 DAO monDAO = DAO.getInstance();
                 // Vérifie si la connexion au SGBD est effectuée et vérifie si les champs du nom d'utilisateur et du mdp sont remplis
                 if (monDAO != null) {
                     if (!("".equals(nomuser) && "".equals(mdp))) {
-                        ResultSet connexionPersonnel = monDAO.requeteSelection("SELECT nomuser, mdp FROM personnel WHERE nomuser='" + nomuser + "' AND mdp='" + mdp + "'");
+                        ResultSet connexionPersonnel = monDAO.requeteSelection("SELECT nomuser, mdp, id_profil FROM personnel WHERE nomuser='" + nomuser + "' AND mdp='" + mdp + "'");
                         // Parcours la table et si les informations rentrées dans les champs sont trouvées dans la BDD récupère l'id du profil du personnel voulant se connecter
                         if (connexionPersonnel.next()) {
-                            ResultSet requeteProfil = monDAO.requeteSelection("SELECT id_profil FROM personnel WHERE nomuser='" + nomuser + "' AND mdp='" + mdp + "'");
-                            requeteProfil.next();
-                            String profilPersonnel = requeteProfil.getString(1);
+                            String profilPersonnel = connexionPersonnel.getString(3);
                             /* Vérifie en fonction de l'id du profil si c'est un agent ou un admin qui essaye de se connecter
                             Utilise une méthode 'setIdPersonnel' pour pouvoir stocker l'id du personnel voulant se connecter */
                             if ("1".equals(profilPersonnel)) {
                                 AccueilAgent accueilAgent = new AccueilAgent();
                                 accueilAgent.setVisible(true);
-                                ResultSet requeteIdPersonnel = monDAO.requeteSelection("SELECT id_personnel FROM personnel WHERE nomuser='" + nomuser + "' AND mdp='" + mdp + "'");
-                                requeteIdPersonnel.next();
-                                accueilAgent.setIdPersonnel(requeteIdPersonnel.getString(1));
+                                accueilAgent.setIdPersonnel(profilPersonnel);
                                 accueilAgent.setLocationRelativeTo(this);
                                 Authentification.this.dispose();
                             } else {
                                 AccueilAdmin accueilAdmin = new AccueilAdmin();
                                 accueilAdmin.setVisible(true);
-                                ResultSet requeteIdPersonnel = monDAO.requeteSelection("SELECT id_personnel FROM personnel WHERE nomuser='" + nomuser + "' AND mdp='" + mdp + "'");
-                                requeteIdPersonnel.next();
-                                accueilAdmin.setIdPersonnel(requeteIdPersonnel.getString(1));
+                                accueilAdmin.setIdPersonnel(profilPersonnel);
                                 accueilAdmin.setLocationRelativeTo(this);
                                 Authentification.this.dispose();
                             }
                         } else {
                             jLabelEtat.setText("Veuillez vérifier les informations saisies");
+                            AttributedString messageErreur = new AttributedString(jLabelEtat.getText());
+                            messageErreur.addAttribute(TextAttribute.FOREGROUND, Color.RED, 0, 42);
                         }
                     } else {
                         jLabelEtat.setText("Veuillez remplir tout les champs");
                     }
+                } else {
+                    jLabelEtat.setText("Veuillez vérifier les informations saisies");
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
