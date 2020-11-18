@@ -34,6 +34,7 @@ public class Statistiques extends javax.swing.JPanel {
 
         jLabelTotalProduitVendu = new javax.swing.JLabel();
         jButtonActualiserMontant = new javax.swing.JButton();
+        jLabelMontantProduitVendu = new javax.swing.JLabel();
 
         jLabelTotalProduitVendu.setText("Nombre total de produit vendu :");
 
@@ -44,6 +45,8 @@ public class Statistiques extends javax.swing.JPanel {
             }
         });
 
+        jLabelMontantProduitVendu.setText("Montant total des produits vendus :");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -51,6 +54,7 @@ public class Statistiques extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelMontantProduitVendu)
                     .addComponent(jButtonActualiserMontant)
                     .addComponent(jLabelTotalProduitVendu))
                 .addContainerGap(131, Short.MAX_VALUE))
@@ -62,24 +66,37 @@ public class Statistiques extends javax.swing.JPanel {
                 .addComponent(jButtonActualiserMontant)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelTotalProduitVendu)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabelMontantProduitVendu)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonActualiserMontantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualiserMontantActionPerformed
         // Bouton pour actualiser le nombre de ventes total
+        this.actualiserMontant();
+    }//GEN-LAST:event_jButtonActualiserMontantActionPerformed
+
+    /**
+     * Méthode servant à afficher le nombre des produits vendus
+     */
+    public void actualiserMontant() {
+
         try {
             ResultSet totalProduitVendu = DAO.getInstance().requeteSelection("SELECT SUM(qte) FROM contenir");
             totalProduitVendu.next();
             jLabelTotalProduitVendu.setText("Nombre total de produit vendu : " + totalProduitVendu.getString(1));
+            ResultSet montantProduitVendu = DAO.getInstance().requeteSelection("SELECT SUM(qte*tarif_produit) as montant FROM contenir INNER JOIN produit ON contenir.id_produit = produit.id_produit");
+            montantProduitVendu.next();
+            jLabelMontantProduitVendu.setText("Montant total des produits vendus : " + montantProduitVendu.getString(1) + "€");
         } catch (SQLException ex) {
             Logger.getLogger(Statistiques.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButtonActualiserMontantActionPerformed
-
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonActualiserMontant;
+    private javax.swing.JLabel jLabelMontantProduitVendu;
     private javax.swing.JLabel jLabelTotalProduitVendu;
     // End of variables declaration//GEN-END:variables
 }

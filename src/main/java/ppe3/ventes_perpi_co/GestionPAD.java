@@ -499,9 +499,9 @@ public class GestionPAD extends javax.swing.JPanel {
             }
             DefaultComboBoxModel laComboBoxPopularite = (DefaultComboBoxModel) jComboBoxPopulariteProduit.getModel();
             laComboBoxPopularite.removeAllElements();
-            ResultSet unePopularite = DAO.getInstance().requeteSelection("SELECT popularite_produit FROM produit");
-            while (unePopularite.next()) {
-                laComboBoxPopularite.addElement(unePopularite.getString(1));
+            for (int i = 1; i <= 5; i++) {
+                String popularite = "*";
+                laComboBoxPopularite.addElement(popularite.repeat(i));
             }
         } catch (SQLException ex) {
             Logger.getLogger(GestionPAD.class.getName()).log(Level.SEVERE, null, ex);
@@ -518,9 +518,9 @@ public class GestionPAD extends javax.swing.JPanel {
                 jDialogModifProduit.setLocationRelativeTo(this);
                 DefaultComboBoxModel laComboBoxPopularite = (DefaultComboBoxModel) jComboBoxMPopulariteProduit.getModel();
                 laComboBoxPopularite.removeAllElements();
-                ResultSet unePopularite = DAO.getInstance().requeteSelection("SELECT popularite_produit FROM produit");
-                while (unePopularite.next()) {
-                    laComboBoxPopularite.addElement(unePopularite.getString(1));
+                for (int i = 1; i <= 5; i++) {
+                    String popularite = "*";
+                    laComboBoxPopularite.addElement(popularite.repeat(i));
                 }
                 DefaultComboBoxModel laComboBoxCategorie = (DefaultComboBoxModel) jComboBoxMChoixCategorie.getModel();
                 laComboBoxCategorie.removeAllElements();
@@ -546,16 +546,7 @@ public class GestionPAD extends javax.swing.JPanel {
 
     private void jButtonAfficherListeProduitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAfficherListeProduitActionPerformed
         // Bouton pour actualiser la liste des produits
-        try {
-            DefaultListModel leModelProduit = (DefaultListModel) jListListeProduit.getModel();
-            leModelProduit.clear();
-            ResultSet lesProduits = DAO.getInstance().requeteSelection("SELECT libelle_produit, tarif_produit, stock_produit, popularite_produit, libelle_categorie FROM produit, categorie WHERE produit.id_categorie = categorie.id_categorie");
-            while (lesProduits.next()) {
-                leModelProduit.addElement(lesProduits.getString(1) + "  " + lesProduits.getString(2) + "  " + lesProduits.getString(3) + "  " + lesProduits.getString(4) + "  " + lesProduits.getString(5));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(GestionPAD.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        remplirListeProduit();
     }//GEN-LAST:event_jButtonAfficherListeProduitActionPerformed
 
     private void jListListeProduitComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jListListeProduitComponentShown
@@ -571,31 +562,35 @@ public class GestionPAD extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonFermerAjoutProduitActionPerformed
 
     private void jButtonAjoutUnProduitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAjoutUnProduitActionPerformed
-        // Vérifie si les champs du nom du produit, du tarif du produit et du stock du produit sont remplis
-        if ("".equals(jTextFieldNomProduit.getText()) || "".equals(jTextFieldTarifProduit.getText()) || "".equals(jTextFieldStockProduit.getText())) {
-            jLabelErreurAjoutProduit.setText("Veuillez remplir le nom du produit, le tarif unitaire et le stock");
-        } else {
-            try {
-                DefaultComboBoxModel laComboBoxCategorie = (DefaultComboBoxModel) jComboBoxChoixCategorie.getModel();
-                DefaultComboBoxModel laComboBoxPopularite = (DefaultComboBoxModel) jComboBoxPopulariteProduit.getModel();
-                Integer nombreAjoutProduit = DAO.getInstance().requeteAction("INSERT INTO produit VALUES(null, '" + jTextFieldNomProduit.getText() + "', " + jTextFieldTarifProduit.getText() + ", " + jTextFieldStockProduit.getText() + ", '" + laComboBoxPopularite.getSelectedItem() + "', " + (laComboBoxCategorie.getIndexOf(laComboBoxCategorie.getSelectedItem()) + 1) + ")");
-                if (nombreAjoutProduit > 0) {
-                    JOptionPane.showMessageDialog(jLabelNomProduit, "Produit ajouté avec succès");
-                    System.out.println("Produit ajouté avec succès");
-                    DefaultListModel leModel = (DefaultListModel) jListListeProduit.getModel();
-                    //Vide la liste et la rempli des nouvelles informations se trouvant dans la table 'produit'
-                    leModel.clear();
-                    ResultSet lesProduits = DAO.getInstance().requeteSelection("SELECT libelle_produit, tarif_produit, stock_produit, popularite_produit, libelle_categorie FROM produit, categorie WHERE produit.id_categorie = categorie.id_categorie");
-                    while (lesProduits.next()) {
-                        leModel.addElement(lesProduits.getString(1) + "  " + lesProduits.getString(2) + "  " + lesProduits.getString(3) + "  " + lesProduits.getString(4) + "  " + lesProduits.getString(5));
+        try {
+            ResultSet presenceCategorie = DAO.getInstance().requeteSelection("SELECT id_categorie FROM categorie");
+            if (presenceCategorie.next()) {
+                // Vérifie si les champs du nom du produit, du tarif du produit et du stock du produit sont remplis
+                if ("".equals(jTextFieldNomProduit.getText()) || "".equals(jTextFieldTarifProduit.getText()) || "".equals(jTextFieldStockProduit.getText())) {
+                    jLabelErreurAjoutProduit.setText("Veuillez remplir le nom du produit, le tarif unitaire et le stock");
+                } else {
+                    DefaultComboBoxModel laComboBoxCategorie = (DefaultComboBoxModel) jComboBoxChoixCategorie.getModel();
+                    DefaultComboBoxModel laComboBoxPopularite = (DefaultComboBoxModel) jComboBoxPopulariteProduit.getModel();
+                    Integer nombreAjoutProduit = DAO.getInstance().requeteAction("INSERT INTO produit VALUES(null, '" + jTextFieldNomProduit.getText() + "', " + jTextFieldTarifProduit.getText() + ", " + jTextFieldStockProduit.getText() + ", '" + laComboBoxPopularite.getSelectedItem() + "', " + (laComboBoxCategorie.getIndexOf(laComboBoxCategorie.getSelectedItem()) + 1) + ")");
+                    if (nombreAjoutProduit > 0) {
+                        JOptionPane.showMessageDialog(jLabelNomProduit, "Produit ajouté avec succès");
+                        System.out.println("Produit ajouté avec succès");
+                        DefaultListModel leModel = (DefaultListModel) jListListeProduit.getModel();
+                        //Vide la liste et la rempli des nouvelles informations se trouvant dans la table 'produit'
+                        leModel.clear();
+                        ResultSet lesProduits = DAO.getInstance().requeteSelection("SELECT libelle_produit, tarif_produit, stock_produit, popularite_produit, libelle_categorie FROM produit, categorie WHERE produit.id_categorie = categorie.id_categorie");
+                        while (lesProduits.next()) {
+                            leModel.addElement(lesProduits.getString(1) + "  " + lesProduits.getString(2) + "  " + lesProduits.getString(3) + "  " + lesProduits.getString(4) + "  " + lesProduits.getString(5));
 
+                        }
+                        jDialogAjoutProduit.dispose();
                     }
-                    jDialogAjoutProduit.dispose();
                 }
-            } catch (Exception ex) {
-                Logger.getLogger(GestionPAD.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println("Erreur lors de l'ajout du produit");
+            } else {
+                JOptionPane.showMessageDialog(this, "Une catégorie doit au préalable être enregistrée pour pouvoir ajouter un produit");
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionPAD.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonAjoutUnProduitActionPerformed
 
@@ -629,7 +624,8 @@ public class GestionPAD extends javax.swing.JPanel {
                 jDialogModifProduit.dispose();
             }
         } catch (Exception ex) {
-            Logger.getLogger(GestionPAD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionPAD.class
+                    .getName()).log(Level.SEVERE, null, ex);
             System.out.println("Erreur lors de la modification du produit");
         }
     }//GEN-LAST:event_jButtonModifProduitActionPerformed
@@ -678,7 +674,8 @@ public class GestionPAD extends javax.swing.JPanel {
                 leModelProduit.addElement(lesProduits.getString(1) + "  " + lesProduits.getString(2) + "  " + lesProduits.getString(3) + "  " + lesProduits.getString(4) + "  " + lesProduits.getString(5));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(GestionPAD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionPAD.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
     }
 

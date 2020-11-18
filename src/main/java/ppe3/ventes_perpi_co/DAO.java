@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  * @author a.athmane
  */
 public class DAO {
-    
+
     private static String nomServeur;
     private static String port;
     private static String nomBdd;
@@ -42,8 +42,8 @@ public class DAO {
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public static DAO getInstance() {
         if (DAO.monDao == null) {
@@ -57,8 +57,8 @@ public class DAO {
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public Boolean connexionActive() {
         Boolean connexionActive = true;
@@ -74,8 +74,9 @@ public class DAO {
 
     /**
      * Requête SQL de sélection
+     *
      * @param sql Requête SQL (SElECT)
-     * @return 
+     * @return
      */
     public ResultSet requeteSelection(String sql) {
 
@@ -92,8 +93,9 @@ public class DAO {
 
     /**
      * Requête SQL d'action
+     *
      * @param sql Requête SQL (INSERT, etc...)
-     * @return 
+     * @return
      */
     public Integer requeteAction(String sql) {
 
@@ -110,6 +112,7 @@ public class DAO {
 
     /**
      * Methode setter 'setNomServeur' pour définir un ip/nom
+     *
      * @param nomServeur Nom ou adresse ip du serveur
      */
     public static void setNomServeur(String nomServeur) {
@@ -118,6 +121,7 @@ public class DAO {
 
     /**
      * Méthode setter 'setSetPort' pour définir un port
+     *
      * @param port Port
      */
     public static void setPort(String port) {
@@ -125,7 +129,9 @@ public class DAO {
     }
 
     /**
-     * Méthode setter 'setNomBdd' pour définir le nom de la base de donnée sur laquelle on va se connecter
+     * Méthode setter 'setNomBdd' pour définir le nom de la base de donnée sur
+     * laquelle on va se connecter
+     *
      * @param nomBdd Nom de la base de données
      */
     public static void setNomBdd(String nomBdd) {
@@ -133,7 +139,9 @@ public class DAO {
     }
 
     /**
-     * Méthode setter 'setNomUtilisateur' pour définir le nom d'utilisateur permettant de se connecter au SGBD
+     * Méthode setter 'setNomUtilisateur' pour définir le nom d'utilisateur
+     * permettant de se connecter au SGBD
+     *
      * @param nomUtilisateur Nom d'utilisateur pour se connecter au SGBD
      */
     public static void setNomUtilisateur(String nomUtilisateur) {
@@ -141,7 +149,9 @@ public class DAO {
     }
 
     /**
-     * Méthode setter 'setMotDePasse' pour définir le mot de passe permettant de se connecter au SGBD
+     * Méthode setter 'setMotDePasse' pour définir le mot de passe permettant de
+     * se connecter au SGBD
+     *
      * @param motDePasse Mot de passe pour se connecter au SGBD
      */
     public static void setMotDePasse(String motDePasse) {

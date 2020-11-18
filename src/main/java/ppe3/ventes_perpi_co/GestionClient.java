@@ -64,7 +64,7 @@ public class GestionClient extends javax.swing.JPanel {
         jButtonAjoutClient = new javax.swing.JButton();
         jButtonModifierClient = new javax.swing.JButton();
         jButtonAfficherListeClient = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPaneListeClient = new javax.swing.JScrollPane();
         jListListeClient = new javax.swing.JList<>();
 
         jDialogAjoutClient.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -298,7 +298,7 @@ public class GestionClient extends javax.swing.JPanel {
                 jListListeClientComponentShown(evt);
             }
         });
-        jScrollPane2.setViewportView(jListListeClient);
+        jScrollPaneListeClient.setViewportView(jListListeClient);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -311,7 +311,7 @@ public class GestionClient extends javax.swing.JPanel {
                     .addComponent(jButtonModifierClient, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonAfficherListeClient))
                 .addGap(44, 44, 44)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPaneListeClient, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -326,7 +326,7 @@ public class GestionClient extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jButtonAfficherListeClient)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
+                    .addComponent(jScrollPaneListeClient, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -364,16 +364,7 @@ public class GestionClient extends javax.swing.JPanel {
 
     private void jButtonAfficherListeClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAfficherListeClientActionPerformed
         //Bouton pour actualiser la liste des clients
-        try {
-            DefaultListModel leModelClient = (DefaultListModel) jListListeClient.getModel();
-            leModelClient.clear();
-            ResultSet lesClients = DAO.getInstance().requeteSelection("SELECT * FROM client");
-            while (lesClients.next()) {
-                leModelClient.addElement(lesClients.getString(2) + "  " + lesClients.getString(3) + "  " + lesClients.getString(4) + "  " + lesClients.getString(5));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(GestionClient.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        remplirListeClient();
     }//GEN-LAST:event_jButtonAfficherListeClientActionPerformed
 
     private void jListListeClientComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jListListeClientComponentShown
@@ -386,13 +377,12 @@ public class GestionClient extends javax.swing.JPanel {
 
     private void jButtonAjoutUnClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAjoutUnClientActionPerformed
         // Vérifie si le champ du nom et du prenom sont remplis
-        if ("".equals(jTextFieldNomClient.getText()) || "".equals(jTextFieldPrenomClient.getText())) {
+        if ("".equals(jTextFieldNomClient.getText()) && "".equals(jTextFieldPrenomClient.getText())) {
             jLabelErreurAjoutClient.setText("Veuillez remplir au moins le nom et le prénom");
         } else {
             try {
                 // Requête SQL pour insérer les valeurs des rentrés dans les champs dans la table 'client'
                 Integer nombreAjoutClient = DAO.getInstance().requeteAction("INSERT INTO client VALUES(null, '" + jTextFieldNomClient.getText() + "', '" + jTextFieldPrenomClient.getText() + "', '" + jTextFieldCourrielClient.getText() + "', '" + jTextFieldTelClient.getText() + "')");
-                System.out.println(nombreAjoutClient);
                 if (nombreAjoutClient > 0) {
                     jDialogAjoutClient.dispose();
                     JOptionPane.showMessageDialog(jLabelNomClient, "Client ajouté avec succès");
@@ -484,7 +474,7 @@ public class GestionClient extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelPrenomClient;
     private javax.swing.JLabel jLabelTelClient;
     private javax.swing.JList<String> jListListeClient;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPaneListeClient;
     private javax.swing.JTextField jTextFieldCourrielClient;
     private javax.swing.JTextField jTextFieldMCourrielClient;
     private javax.swing.JTextField jTextFieldMNomClient;

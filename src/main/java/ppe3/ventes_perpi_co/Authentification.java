@@ -5,11 +5,8 @@
  */
 package ppe3.ventes_perpi_co;
 
-import java.awt.Color;
-import java.awt.font.TextAttribute;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.AttributedString;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,6 +23,8 @@ public class Authentification extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
+
+    static Integer idPersonnel;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -192,41 +191,38 @@ public class Authentification extends javax.swing.JFrame {
     private void jButtonConnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConnexionActionPerformed
         String nomuser = jTextFieldUtilisateurPersonnel.getText();
         String mdp = jPasswordFieldMDPPersonnel.getText();
-        DAO.setNomServeur(jTextFieldNomServeur.getText());
-        DAO.setPort(jTextFieldPort.getText());
-        DAO.setNomBdd(jTextFieldNomBDD.getText());
-        DAO.setNomUtilisateur(jTextFieldUtilisateurSGBD.getText());
-        DAO.setMotDePasse(jPasswordFieldMdpSGBD.getText());
 
         if (!("".equals(jTextFieldNomBDD.getText()) && "".equals(jTextFieldNomServeur.getText()) && "".equals(jTextFieldPort.getText()) && "".equals(jTextFieldUtilisateurSGBD.getText()) && "".equals(jPasswordFieldMdpSGBD.getText()))) {
+            DAO.setNomServeur(jTextFieldNomServeur.getText());
+            DAO.setPort(jTextFieldPort.getText());
+            DAO.setNomBdd(jTextFieldNomBDD.getText());
+            DAO.setNomUtilisateur(jTextFieldUtilisateurSGBD.getText());
+            DAO.setMotDePasse(jPasswordFieldMdpSGBD.getText());
             try {
                 DAO monDAO = DAO.getInstance();
                 // Vérifie si la connexion au SGBD est effectuée et vérifie si les champs du nom d'utilisateur et du mdp sont remplis
                 if (monDAO != null) {
                     if (!("".equals(nomuser) && "".equals(mdp))) {
-                        ResultSet connexionPersonnel = monDAO.requeteSelection("SELECT nomuser, mdp, id_profil FROM personnel WHERE nomuser='" + nomuser + "' AND mdp='" + mdp + "'");
+                        ResultSet connexionPersonnel = monDAO.requeteSelection("SELECT id_personnel, nomuser, mdp, id_profil FROM personnel WHERE nomuser='" + nomuser + "' AND mdp='" + mdp + "'");
                         // Parcours la table et si les informations rentrées dans les champs sont trouvées dans la BDD récupère l'id du profil du personnel voulant se connecter
                         if (connexionPersonnel.next()) {
-                            String profilPersonnel = connexionPersonnel.getString(3);
+                            setIdPersonnel(connexionPersonnel.getInt(1));
+                            String profilPersonnel = connexionPersonnel.getString(4);
                             /* Vérifie en fonction de l'id du profil si c'est un agent ou un admin qui essaye de se connecter
                             Utilise une méthode 'setIdPersonnel' pour pouvoir stocker l'id du personnel voulant se connecter */
                             if ("1".equals(profilPersonnel)) {
                                 AccueilAgent accueilAgent = new AccueilAgent();
                                 accueilAgent.setVisible(true);
-                                accueilAgent.setIdPersonnel(profilPersonnel);
                                 accueilAgent.setLocationRelativeTo(this);
                                 Authentification.this.dispose();
                             } else {
                                 AccueilAdmin accueilAdmin = new AccueilAdmin();
                                 accueilAdmin.setVisible(true);
-                                accueilAdmin.setIdPersonnel(profilPersonnel);
                                 accueilAdmin.setLocationRelativeTo(this);
                                 Authentification.this.dispose();
                             }
                         } else {
                             jLabelEtat.setText("Veuillez vérifier les informations saisies");
-                            AttributedString messageErreur = new AttributedString(jLabelEtat.getText());
-                            messageErreur.addAttribute(TextAttribute.FOREGROUND, Color.RED, 0, 42);
                         }
                     } else {
                         jLabelEtat.setText("Veuillez remplir tout les champs");
@@ -245,6 +241,24 @@ public class Authentification extends javax.swing.JFrame {
     private void jButtonQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuitterActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButtonQuitterActionPerformed
+
+    /**
+     * Méthode permettant de définir l'id du personnel
+     *
+     * @param idPersonnel L'id du personnel sous forme d'entier
+     */
+    public static void setIdPersonnel(Integer idPersonnel) {
+        Authentification.idPersonnel = idPersonnel;
+    }
+
+    /**
+     * Méthode permettent de renvoyer l'id du personnel connecté
+     *
+     * @return L'Id du personnel connecté sous forme d'entier
+     */
+    public static Integer getIdPersonnel() {
+        return Authentification.idPersonnel;
+    }
 
     /**
      * @param args the command line arguments

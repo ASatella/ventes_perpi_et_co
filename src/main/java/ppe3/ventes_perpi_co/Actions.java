@@ -9,7 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,6 +35,21 @@ public class Actions extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialogModifAgent = new javax.swing.JDialog();
+        jLabelModifAgent = new javax.swing.JLabel();
+        jLabelMNomAgent = new javax.swing.JLabel();
+        jTextFieldMNomAgent = new javax.swing.JTextField();
+        jLabelMProfilAgent = new javax.swing.JLabel();
+        jButtonFermerModifAgent = new javax.swing.JButton();
+        jButtonModifAgent = new javax.swing.JButton();
+        jComboBoxMChoixProfil = new javax.swing.JComboBox<>();
+        jLabelErreurModifAgent = new javax.swing.JLabel();
+        jLabelMPrenomAgent = new javax.swing.JLabel();
+        jLabelMCourrielAgent = new javax.swing.JLabel();
+        jLabelMTelephoneAgent = new javax.swing.JLabel();
+        jTextFieldMPrenomAgent = new javax.swing.JTextField();
+        jTextFieldMCourrielAgent = new javax.swing.JTextField();
+        jTextFieldMTelephoneAgent = new javax.swing.JTextField();
         jTabbedPaneActions = new javax.swing.JTabbedPane();
         jPanelGenererJeuEssai = new javax.swing.JPanel();
         jLabelJeuProduit = new javax.swing.JLabel();
@@ -47,6 +64,143 @@ public class Actions extends javax.swing.JPanel {
         jScrollPaneTableauAgent = new javax.swing.JScrollPane();
         jListListeAgent = new javax.swing.JList<>();
         jButtonRechargerTableauAgent = new javax.swing.JButton();
+        jButtonModifierAgent = new javax.swing.JButton();
+
+        jDialogModifAgent.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jDialogModifAgent.setTitle("Ajout d'un produit");
+        jDialogModifAgent.setAlwaysOnTop(true);
+        jDialogModifAgent.setResizable(false);
+
+        jLabelModifAgent.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabelModifAgent.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelModifAgent.setText("Modifier un agent");
+        jLabelModifAgent.setName(""); // NOI18N
+
+        jLabelMNomAgent.setText("Nom de l'agent :");
+
+        jTextFieldMNomAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldMNomAgentActionPerformed(evt);
+            }
+        });
+
+        jLabelMProfilAgent.setText("Profil de l'agent :");
+
+        jButtonFermerModifAgent.setText("Fermer");
+        jButtonFermerModifAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFermerModifAgentActionPerformed(evt);
+            }
+        });
+
+        jButtonModifAgent.setText("Modifier");
+        jButtonModifAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModifAgentActionPerformed(evt);
+            }
+        });
+
+        jComboBoxMChoixProfil.setModel(new DefaultComboBoxModel());
+        jComboBoxMChoixProfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxMChoixProfilActionPerformed(evt);
+            }
+        });
+
+        jLabelErreurModifAgent.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        jLabelMPrenomAgent.setText("Prénom de l'agent :");
+
+        jLabelMCourrielAgent.setText("Courriel de l'agent :");
+
+        jLabelMTelephoneAgent.setText("Téléphone de l'agent :");
+
+        jTextFieldMPrenomAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldMPrenomAgentActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialogModifAgentLayout = new javax.swing.GroupLayout(jDialogModifAgent.getContentPane());
+        jDialogModifAgent.getContentPane().setLayout(jDialogModifAgentLayout);
+        jDialogModifAgentLayout.setHorizontalGroup(
+            jDialogModifAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabelErreurModifAgent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogModifAgentLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jDialogModifAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogModifAgentLayout.createSequentialGroup()
+                        .addComponent(jButtonFermerModifAgent)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonModifAgent)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogModifAgentLayout.createSequentialGroup()
+                        .addComponent(jLabelModifAgent)
+                        .addGap(45, 45, 45))))
+            .addGroup(jDialogModifAgentLayout.createSequentialGroup()
+                .addGroup(jDialogModifAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogModifAgentLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabelMNomAgent)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addComponent(jTextFieldMNomAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDialogModifAgentLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jDialogModifAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogModifAgentLayout.createSequentialGroup()
+                                .addComponent(jLabelMTelephoneAgent)
+                                .addGap(10, 10, 10)
+                                .addComponent(jTextFieldMTelephoneAgent))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogModifAgentLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jDialogModifAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogModifAgentLayout.createSequentialGroup()
+                                        .addComponent(jLabelMProfilAgent)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jComboBoxMChoixProfil, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogModifAgentLayout.createSequentialGroup()
+                                        .addGroup(jDialogModifAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabelMCourrielAgent, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabelMPrenomAgent, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(jDialogModifAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextFieldMPrenomAgent, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                                            .addComponent(jTextFieldMCourrielAgent))))))))
+                .addContainerGap())
+        );
+        jDialogModifAgentLayout.setVerticalGroup(
+            jDialogModifAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogModifAgentLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelModifAgent)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jDialogModifAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldMNomAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelMNomAgent))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDialogModifAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldMPrenomAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelMPrenomAgent))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDialogModifAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldMCourrielAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelMCourrielAgent))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDialogModifAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelMTelephoneAgent)
+                    .addComponent(jTextFieldMTelephoneAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jDialogModifAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxMChoixProfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelMProfilAgent))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelErreurModifAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jDialogModifAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonFermerModifAgent)
+                    .addComponent(jButtonModifAgent))
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
 
         jTabbedPaneActions.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -131,6 +285,13 @@ public class Actions extends javax.swing.JPanel {
             }
         });
 
+        jButtonModifierAgent.setText("Modifier un agent");
+        jButtonModifierAgent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModifierAgentActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelGestionAgentLayout = new javax.swing.GroupLayout(jPanelGestionAgent);
         jPanelGestionAgent.setLayout(jPanelGestionAgentLayout);
         jPanelGestionAgentLayout.setHorizontalGroup(
@@ -141,7 +302,9 @@ public class Actions extends javax.swing.JPanel {
                     .addComponent(jScrollPaneTableauAgent, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
                     .addGroup(jPanelGestionAgentLayout.createSequentialGroup()
                         .addComponent(jButtonRechargerTableauAgent)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonModifierAgent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(220, 220, 220)))
                 .addContainerGap())
         );
         jPanelGestionAgentLayout.setVerticalGroup(
@@ -149,7 +312,9 @@ public class Actions extends javax.swing.JPanel {
             .addGroup(jPanelGestionAgentLayout.createSequentialGroup()
                 .addComponent(jScrollPaneTableauAgent, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonRechargerTableauAgent))
+                .addGroup(jPanelGestionAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonRechargerTableauAgent)
+                    .addComponent(jButtonModifierAgent)))
         );
 
         jTabbedPaneActions.addTab("Gestion des agents", jPanelGestionAgent);
@@ -167,24 +332,32 @@ public class Actions extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonGenererJeuProduitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenererJeuProduitActionPerformed
-        // Vérifie si le champ est rempli
-        if ("".equals(jTextFieldNombreProduit.getText())) {
-            jLabelErreurGenerationProduit.setText("Veuillez remplir le champ pour pouvoir générer un jeu d'essai pour les produits");
-        } else {
-            try {
-            } catch (Exception e) {
-                Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, e);
-                jLabelErreurGenerationProduit.setText("Erreur lors de la génération d'un jeu d'essai pour les produits");
+        try {
+            ResultSet presenceCategorie = DAO.getInstance().requeteSelection("SELECT id_categorie FROM categorie");
+            if (presenceCategorie.next()) {
+                // Vérifie si le champ est rempli
+                if ("".equals(jTextFieldNombreProduit.getText())) {
+                    jLabelErreurGenerationProduit.setText("Veuillez remplir le champ pour pouvoir générer un jeu d'essai pour les produits");
+                } else {
+                    try {
+                    } catch (Exception e) {
+                        Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, e);
+                    }
+                }
+                DAO.getInstance().requeteAction("DELETE FROM produit");
+                // Insertion de(s) nouveau(x) tuples générés dans la table 'produit'
+                int i = 0;
+                while (i < Integer.valueOf(jTextFieldNombreProduit.getText())) {
+                    DAO.getInstance().requeteAction("INSERT INTO produit VALUES (null, 'produit " + i + "',FLOOR(1 + (RAND() * 100)) , FLOOR(1 + (RAND() * 100)), '****', 1)");
+                    i++;
+                }
+                jLabelErreurGenerationProduit.setText(i + " produit(s) ajouté(s)");
+            } else {
+                JOptionPane.showMessageDialog(this, "Vous devez au préalable avoir au moins une catégorie avant de générer un jeu d'essai pour les produits");
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, ex);
         }
-        DAO.getInstance().requeteAction("DELETE FROM produit");
-        // Insertion de(s) nouveau(x) tuples générés dans la table 'produit'
-        int i = 0;
-        while (i < Integer.valueOf(jTextFieldNombreProduit.getText())) {
-            DAO.getInstance().requeteAction("INSERT INTO produit VALUES (null, 'produit " + i + "',10 , 10, '****', 1)");
-            i++;
-        }
-        jLabelErreurGenerationProduit.setText(i + " produit(s) ajouté(s)");
     }//GEN-LAST:event_jButtonGenererJeuProduitActionPerformed
 
     private void jButtonGenererJeuCategorieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenererJeuCategorieActionPerformed
@@ -210,31 +383,89 @@ public class Actions extends javax.swing.JPanel {
 
     private void jButtonRechargerTableauAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRechargerTableauAgentActionPerformed
         // Bouton pour actualiser la liste des agents
-        try {
-            DefaultListModel leModelAgent = (DefaultListModel) jListListeAgent.getModel();
-            leModelAgent.clear();
-            ResultSet lesAgents = DAO.getInstance().requeteSelection("SELECT nomuser, mdp, nom, prenom, email, telephone, libelle_profil FROM personnel, profil WHERE personnel.id_profil = profil.id_profil");
-            while (lesAgents.next()) {
-                leModelAgent.addElement(lesAgents.getString(1) + "  " + lesAgents.getString(2) + "  " + lesAgents.getString(3) + "  " + lesAgents.getString(4) + "  " + lesAgents.getString(5) + "  " + lesAgents.getString(6) + "  " + lesAgents.getString(7));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.remplirListeAgent();
     }//GEN-LAST:event_jButtonRechargerTableauAgentActionPerformed
 
     private void jTabbedPaneActionsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPaneActionsMouseClicked
 
     }//GEN-LAST:event_jTabbedPaneActionsMouseClicked
 
+    private void jButtonModifierAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModifierAgentActionPerformed
+        // Vérifie si une ligne de la liste des agents est sélectionée pour pouvoir la modifier
+        if (!jListListeAgent.isSelectionEmpty()) {
+            try {
+                jDialogModifAgent.setVisible(true);
+                jDialogModifAgent.setSize(270, 298);
+                jDialogModifAgent.setResizable(false);
+                jDialogModifAgent.setLocationRelativeTo(this);
+                DefaultComboBoxModel laComboBoxProfil = (DefaultComboBoxModel) jComboBoxMChoixProfil.getModel();
+                laComboBoxProfil.removeAllElements();
+                Integer infoAgent = jListListeAgent.getSelectedIndex();
+                ResultSet unProfil = DAO.getInstance().requeteSelection("SELECT * FROM profil");
+                ResultSet lesInfoAgents = DAO.getInstance().requeteSelection("SELECT nom, prenom, email, telephone FROM personnel");
+                while (unProfil.next()) {
+                    laComboBoxProfil.addElement(unProfil.getString(2));
+                }
+                lesInfoAgents.absolute(infoAgent + 1);
+                jTextFieldMNomAgent.setText(lesInfoAgents.getString(1));
+                jTextFieldMPrenomAgent.setText(lesInfoAgents.getString(2));
+                jTextFieldMCourrielAgent.setText(lesInfoAgents.getString(3));
+                jTextFieldMTelephoneAgent.setText(lesInfoAgents.getString(4));
+                laComboBoxProfil.setSelectedItem(unProfil.getString(2));
+            } catch (SQLException ex) {
+                Logger.getLogger(GestionPAD.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Veuillez séléctionner un(e) agent(e) à modifier");
+        }
+    }//GEN-LAST:event_jButtonModifierAgentActionPerformed
+
+    private void jTextFieldMNomAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMNomAgentActionPerformed
+
+    }//GEN-LAST:event_jTextFieldMNomAgentActionPerformed
+
+    private void jButtonFermerModifAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFermerModifAgentActionPerformed
+        jDialogModifAgent.dispose();
+    }//GEN-LAST:event_jButtonFermerModifAgentActionPerformed
+
+    private void jButtonModifAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModifAgentActionPerformed
+        // Requête SQL pour mettre à jour les valeurs se trouvant dans la table en fonction de la ligne sélectionnée et des valeurs rentrées dans les champs et de la valeur sélectionné dans la combobox
+        try {
+            DefaultComboBoxModel laComboBoxProfil = (DefaultComboBoxModel) jComboBoxMChoixProfil.getModel();
+            Integer nombreModifAgent = DAO.getInstance().requeteAction("UPDATE personnel VALUES(nom, prenom, email, telephone, id_profil) SET nom = '" + jTextFieldMNomAgent.getText() + "', prenom = '" + jTextFieldMPrenomAgent.getText() + "', email = '" + jTextFieldMCourrielAgent.getText() + "', telephone = '" + jTextFieldMTelephoneAgent.getText() + "', id_profil = " + (laComboBoxProfil.getIndexOf(laComboBoxProfil.getSelectedItem()) + 1) + " WHERE id_personnel= " + (jListListeAgent.getSelectedIndex() + 1) + "");
+            if (nombreModifAgent > 0) {
+                JOptionPane.showMessageDialog(jLabelMNomAgent, "Agent(e) modifié(e) avec succès");
+                DefaultListModel leModelAgent = (DefaultListModel) jListListeAgent.getModel();
+                // Vide la liste et la rempli des nouvelles informations se trouvant dans la table 'personnel'
+                leModelAgent.clear();
+                ResultSet lesAgents = DAO.getInstance().requeteSelection("SELECT nomuser, mdp, nom, prenom, email, telephone, libelle_profil FROM personnel INNER JOIN profil ON personnel.id_profil = profil.id_profil");
+                while (lesAgents.next()) {
+                    leModelAgent.addElement(lesAgents.getString(1) + "  " + lesAgents.getString(2) + "  " + lesAgents.getString(3) + "  " + lesAgents.getString(4) + "  " + lesAgents.getString(5) + "  " + lesAgents.getString(6) + "  " + lesAgents.getString(7));
+                }
+                jDialogModifAgent.dispose();
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(GestionPAD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonModifAgentActionPerformed
+
+    private void jComboBoxMChoixProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMChoixProfilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxMChoixProfilActionPerformed
+
+    private void jTextFieldMPrenomAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMPrenomAgentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldMPrenomAgentActionPerformed
+
     /**
-     * Méthode servant à initialiser la liste pour la remplir en fonction des
-     * données présente sur la BDD
+     * Méthode servant à initialiser la liste des agents pour la remplir en
+     * fonction des données présente sur la BDD
      */
     public void remplirListeAgent() {
         try {
             DefaultListModel leModelAgent = (DefaultListModel) jListListeAgent.getModel();
             leModelAgent.clear();
-            ResultSet lesAgents = DAO.getInstance().requeteSelection("SELECT nomuser, mdp, nom, prenom, email, telephone, libelle_profil FROM personnel, profil WHERE personnel.id_profil = profil.id_profil");
+            ResultSet lesAgents = DAO.getInstance().requeteSelection("SELECT nomuser, mdp, nom, prenom, email, telephone, libelle_profil FROM personnel INNER JOIN profil ON personnel.id_profil = profil.id_profil");
             while (lesAgents.next()) {
                 leModelAgent.addElement(lesAgents.getString(1) + "  " + lesAgents.getString(2) + "  " + lesAgents.getString(3) + "  " + lesAgents.getString(4) + "  " + lesAgents.getString(5) + "  " + lesAgents.getString(6) + "  " + lesAgents.getString(7));
             }
@@ -244,18 +475,34 @@ public class Actions extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonFermerModifAgent;
     private javax.swing.JButton jButtonGenererJeuCategorie;
     private javax.swing.JButton jButtonGenererJeuProduit;
+    private javax.swing.JButton jButtonModifAgent;
+    private javax.swing.JButton jButtonModifierAgent;
     private javax.swing.JButton jButtonRechargerTableauAgent;
+    private javax.swing.JComboBox<String> jComboBoxMChoixProfil;
+    private javax.swing.JDialog jDialogModifAgent;
     private javax.swing.JLabel jLabelErreurGenerationCategorie;
     private javax.swing.JLabel jLabelErreurGenerationProduit;
+    private javax.swing.JLabel jLabelErreurModifAgent;
     private javax.swing.JLabel jLabelJeuCategorie;
     private javax.swing.JLabel jLabelJeuProduit;
+    private javax.swing.JLabel jLabelMCourrielAgent;
+    private javax.swing.JLabel jLabelMNomAgent;
+    private javax.swing.JLabel jLabelMPrenomAgent;
+    private javax.swing.JLabel jLabelMProfilAgent;
+    private javax.swing.JLabel jLabelMTelephoneAgent;
+    private javax.swing.JLabel jLabelModifAgent;
     private javax.swing.JList<String> jListListeAgent;
     private javax.swing.JPanel jPanelGenererJeuEssai;
     private javax.swing.JPanel jPanelGestionAgent;
     private javax.swing.JScrollPane jScrollPaneTableauAgent;
     private javax.swing.JTabbedPane jTabbedPaneActions;
+    private javax.swing.JTextField jTextFieldMCourrielAgent;
+    private javax.swing.JTextField jTextFieldMNomAgent;
+    private javax.swing.JTextField jTextFieldMPrenomAgent;
+    private javax.swing.JTextField jTextFieldMTelephoneAgent;
     private javax.swing.JTextField jTextFieldNombreCategorie;
     private javax.swing.JTextField jTextFieldNombreProduit;
     // End of variables declaration//GEN-END:variables

@@ -253,17 +253,17 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="statistiques1" alignment="0" pref="670" max="32767" attributes="0"/>
+                  <Component id="statistiques2" alignment="0" pref="670" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="statistiques1" alignment="0" pref="322" max="32767" attributes="0"/>
+                  <Component id="statistiques2" alignment="0" pref="322" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="ppe3.ventes_perpi_co.Statistiques" name="statistiques1">
+            <Component class="ppe3.ventes_perpi_co.Statistiques" name="statistiques2">
             </Component>
           </SubComponents>
         </Container>
