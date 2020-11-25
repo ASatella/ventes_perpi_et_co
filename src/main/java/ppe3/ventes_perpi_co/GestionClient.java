@@ -358,7 +358,7 @@ public class GestionClient extends javax.swing.JPanel {
                 Logger.getLogger(GestionClient.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Veuillez sélectionner un client à modifier");
+            JOptionPane.showMessageDialog(this, "Veuillez sélectionner un client à modifier", "Avertissement", 3);
         }
     }//GEN-LAST:event_jButtonModifierClientActionPerformed
 
@@ -398,7 +398,6 @@ public class GestionClient extends javax.swing.JPanel {
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(GestionClient.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println("Erreur lors de l'ajout du client");
             }
         }
     }//GEN-LAST:event_jButtonAjoutUnClientActionPerformed
@@ -429,7 +428,6 @@ public class GestionClient extends javax.swing.JPanel {
             }
         } catch (SQLException ex) {
             Logger.getLogger(GestionClient.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Erreur lors de la modification du client");
         }
     }//GEN-LAST:event_jButtonModifClientActionPerformed
 

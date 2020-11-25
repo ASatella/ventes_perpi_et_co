@@ -64,7 +64,6 @@ public class Actions extends javax.swing.JPanel {
         jScrollPaneTableauAgent = new javax.swing.JScrollPane();
         jListListeAgent = new javax.swing.JList<>();
         jButtonRechargerTableauAgent = new javax.swing.JButton();
-        jButtonModifierAgent = new javax.swing.JButton();
 
         jDialogModifAgent.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jDialogModifAgent.setTitle("Ajout d'un produit");
@@ -285,13 +284,6 @@ public class Actions extends javax.swing.JPanel {
             }
         });
 
-        jButtonModifierAgent.setText("Modifier un agent");
-        jButtonModifierAgent.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonModifierAgentActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanelGestionAgentLayout = new javax.swing.GroupLayout(jPanelGestionAgent);
         jPanelGestionAgent.setLayout(jPanelGestionAgentLayout);
         jPanelGestionAgentLayout.setHorizontalGroup(
@@ -302,9 +294,7 @@ public class Actions extends javax.swing.JPanel {
                     .addComponent(jScrollPaneTableauAgent, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
                     .addGroup(jPanelGestionAgentLayout.createSequentialGroup()
                         .addComponent(jButtonRechargerTableauAgent)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonModifierAgent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(220, 220, 220)))
+                        .addGap(220, 371, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelGestionAgentLayout.setVerticalGroup(
@@ -312,9 +302,7 @@ public class Actions extends javax.swing.JPanel {
             .addGroup(jPanelGestionAgentLayout.createSequentialGroup()
                 .addComponent(jScrollPaneTableauAgent, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelGestionAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonRechargerTableauAgent)
-                    .addComponent(jButtonModifierAgent)))
+                .addComponent(jButtonRechargerTableauAgent))
         );
 
         jTabbedPaneActions.addTab("Gestion des agents", jPanelGestionAgent);
@@ -344,7 +332,7 @@ public class Actions extends javax.swing.JPanel {
                         Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, e);
                     }
                 }
-                DAO.getInstance().requeteAction("DELETE FROM produit");
+                //DAO.getInstance().requeteAction("DELETE FROM produit");
                 // Insertion de(s) nouveau(x) tuples générés dans la table 'produit'
                 int i = 0;
                 while (i < Integer.valueOf(jTextFieldNombreProduit.getText())) {
@@ -353,7 +341,7 @@ public class Actions extends javax.swing.JPanel {
                 }
                 jLabelErreurGenerationProduit.setText(i + " produit(s) ajouté(s)");
             } else {
-                JOptionPane.showMessageDialog(this, "Vous devez au préalable avoir au moins une catégorie avant de générer un jeu d'essai pour les produits");
+                JOptionPane.showMessageDialog(this, "Vous devez au préalable avoir au moins une catégorie avant de générer un jeu d'essai pour les produits", "Avertissement", 3);
             }
         } catch (SQLException ex) {
             Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, ex);
@@ -361,12 +349,13 @@ public class Actions extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonGenererJeuProduitActionPerformed
 
     private void jButtonGenererJeuCategorieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenererJeuCategorieActionPerformed
+        /* Modification d'un agent
         // Vérifie si le champ est rempli
         if ("".equals(jTextFieldNombreCategorie.getText())) {
             jLabelErreurGenerationCategorie.setText("Veuillez remplir le champ pour pouvoir générer un jeu d'essai pour les catégories");
         } else {
             try {
-                DAO.getInstance().requeteAction("DELETE FROM categorie");
+                //DAO.getInstance().requeteAction("DELETE FROM categorie");
                 // Insertion de(s) nouveau(x) tuples générés dans la table 'categorie'
                 int i = 0;
                 while (i < Integer.valueOf(jTextFieldNombreCategorie.getText())) {
@@ -376,9 +365,8 @@ public class Actions extends javax.swing.JPanel {
                 jLabelErreurGenerationCategorie.setText(i + " catégorie(s) ajoutée(s)");
             } catch (Exception e) {
                 Logger.getLogger(Actions.class.getName()).log(Level.SEVERE, null, e);
-                jLabelErreurGenerationCategorie.setText("Erreur lors de la génération d'un jeu d'essai pour les catégories");
             }
-        }
+        }*/
     }//GEN-LAST:event_jButtonGenererJeuCategorieActionPerformed
 
     private void jButtonRechargerTableauAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRechargerTableauAgentActionPerformed
@@ -390,36 +378,6 @@ public class Actions extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jTabbedPaneActionsMouseClicked
 
-    private void jButtonModifierAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModifierAgentActionPerformed
-        // Vérifie si une ligne de la liste des agents est sélectionée pour pouvoir la modifier
-        if (!jListListeAgent.isSelectionEmpty()) {
-            try {
-                jDialogModifAgent.setVisible(true);
-                jDialogModifAgent.setSize(270, 298);
-                jDialogModifAgent.setResizable(false);
-                jDialogModifAgent.setLocationRelativeTo(this);
-                DefaultComboBoxModel laComboBoxProfil = (DefaultComboBoxModel) jComboBoxMChoixProfil.getModel();
-                laComboBoxProfil.removeAllElements();
-                Integer infoAgent = jListListeAgent.getSelectedIndex();
-                ResultSet unProfil = DAO.getInstance().requeteSelection("SELECT * FROM profil");
-                ResultSet lesInfoAgents = DAO.getInstance().requeteSelection("SELECT nom, prenom, email, telephone FROM personnel");
-                while (unProfil.next()) {
-                    laComboBoxProfil.addElement(unProfil.getString(2));
-                }
-                lesInfoAgents.absolute(infoAgent + 1);
-                jTextFieldMNomAgent.setText(lesInfoAgents.getString(1));
-                jTextFieldMPrenomAgent.setText(lesInfoAgents.getString(2));
-                jTextFieldMCourrielAgent.setText(lesInfoAgents.getString(3));
-                jTextFieldMTelephoneAgent.setText(lesInfoAgents.getString(4));
-                laComboBoxProfil.setSelectedItem(unProfil.getString(2));
-            } catch (SQLException ex) {
-                Logger.getLogger(GestionPAD.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Veuillez séléctionner un(e) agent(e) à modifier");
-        }
-    }//GEN-LAST:event_jButtonModifierAgentActionPerformed
-
     private void jTextFieldMNomAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMNomAgentActionPerformed
 
     }//GEN-LAST:event_jTextFieldMNomAgentActionPerformed
@@ -429,6 +387,7 @@ public class Actions extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonFermerModifAgentActionPerformed
 
     private void jButtonModifAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModifAgentActionPerformed
+        /* Modification d'un agent
         // Requête SQL pour mettre à jour les valeurs se trouvant dans la table en fonction de la ligne sélectionnée et des valeurs rentrées dans les champs et de la valeur sélectionné dans la combobox
         try {
             DefaultComboBoxModel laComboBoxProfil = (DefaultComboBoxModel) jComboBoxMChoixProfil.getModel();
@@ -446,7 +405,7 @@ public class Actions extends javax.swing.JPanel {
             }
         } catch (Exception ex) {
             Logger.getLogger(GestionPAD.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }//GEN-LAST:event_jButtonModifAgentActionPerformed
 
     private void jComboBoxMChoixProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxMChoixProfilActionPerformed
@@ -479,7 +438,6 @@ public class Actions extends javax.swing.JPanel {
     private javax.swing.JButton jButtonGenererJeuCategorie;
     private javax.swing.JButton jButtonGenererJeuProduit;
     private javax.swing.JButton jButtonModifAgent;
-    private javax.swing.JButton jButtonModifierAgent;
     private javax.swing.JButton jButtonRechargerTableauAgent;
     private javax.swing.JComboBox<String> jComboBoxMChoixProfil;
     private javax.swing.JDialog jDialogModifAgent;

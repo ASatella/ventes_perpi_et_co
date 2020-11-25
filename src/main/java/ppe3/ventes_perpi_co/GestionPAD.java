@@ -540,7 +540,7 @@ public class GestionPAD extends javax.swing.JPanel {
                 Logger.getLogger(GestionPAD.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Veuillez séléctionner un produit à modifier");
+            JOptionPane.showMessageDialog(this, "Veuillez séléctionner un produit à modifier","Avertissement", 3);
         }
     }//GEN-LAST:event_jButtonModifierProduitActionPerformed
 
@@ -587,7 +587,7 @@ public class GestionPAD extends javax.swing.JPanel {
                     }
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Une catégorie doit au préalable être enregistrée pour pouvoir ajouter un produit");
+                JOptionPane.showMessageDialog(this, "Une catégorie doit au préalable être enregistrée pour pouvoir ajouter un produit", "Avertissement", 3);
             }
         } catch (SQLException ex) {
             Logger.getLogger(GestionPAD.class.getName()).log(Level.SEVERE, null, ex);
@@ -624,9 +624,7 @@ public class GestionPAD extends javax.swing.JPanel {
                 jDialogModifProduit.dispose();
             }
         } catch (Exception ex) {
-            Logger.getLogger(GestionPAD.class
-                    .getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Erreur lors de la modification du produit");
+            Logger.getLogger(GestionPAD.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonModifProduitActionPerformed
 

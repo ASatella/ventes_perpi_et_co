@@ -158,63 +158,47 @@ public class VentePAD extends javax.swing.JPanel {
                 DefaultComboBoxModel laComboBoxClientVente = (DefaultComboBoxModel) jComboBoxClientVentes.getModel();
                 DefaultComboBoxModel laComboBoxProduitVente = (DefaultComboBoxModel) jComboBoxProduitVentes.getModel();
                 DefaultListModel leModelVente = (DefaultListModel) jListListeVente.getModel();
-                DAO.getInstance().requeteAction("INSERT INTO facture VALUES('" + java.time.LocalDateTime.now() + "', '" + java.time.LocalDate.now() + "')");
-                ResultSet facture = DAO.getInstance().requeteSelection("SELECT id_facture FROM facture WHERE date_facture = '" + java.time.LocalDate.now() + "'");
-                // Insertion dans la table 'vente' du tuple correspondant à une vente d'un produit à un client et vérification pour savoir il y a bien un tuple qui s'est inséré
-                facture.next();
-                Integer nombreAjoutVentes = DAO.getInstance().requeteAction("INSERT INTO vente VALUES(null, '" + (laComboBoxClientVente.getIndexOf(laComboBoxClientVente.getSelectedItem()) + 1) + "', '" + Authentification.getIdPersonnel() + "', '" + facture.getString(1) + "')");
-                if ((nombreAjoutVentes) > 0) {
-                    ResultSet idVente = DAO.getInstance().requeteSelection("SELECT id_vente FROM vente");
-                    idVente.last();
-                    Integer nombreQteVentes = DAO.getInstance().requeteAction("INSERT INTO contenir VALUES('" + idVente.getString(1) + "', '" + (laComboBoxProduitVente.getIndexOf(laComboBoxProduitVente.getSelectedItem()) + 1) + "', '" + jTextFieldQteVente.getText() + "')");
-                    // Vérifie si il y a bien un tuple d'insérer dans la table 'contenir'
-                    if (nombreQteVentes > 0) {
-                        JOptionPane.showMessageDialog(this, "Vente ajoutée avec succès !");
-                        System.out.println("Vente ajouté avec succès");
-                        leModelVente.clear();
-                        ResultSet lesVentesQteProduit = DAO.getInstance().requeteSelection("SELECT libelle_produit, contenir.qte FROM contenir INNER JOIN produit ON contenir.id_produit = produit.id_produit");
-                        ResultSet lesVentesClients = DAO.getInstance().requeteSelection("SELECT client.nom, client.prenom, id_facture FROM vente INNER JOIN client ON vente.id_client = client.id_client");
-                        while (lesVentesQteProduit.next() && lesVentesClients.next()) {
-                            leModelVente.addElement(lesVentesQteProduit.getString(1) + " à été vendu " + lesVentesQteProduit.getString(2) + " fois à " + lesVentesClients.getString(1) + " " + lesVentesClients.getString(2) + " le " + lesVentesClients.getString(3));
+                ResultSet reqStockProduit = DAO.getInstance().requeteSelection("SELECT stock_produit FROM produit WHERE id_produit = " + (laComboBoxProduitVente.getIndexOf(laComboBoxProduitVente.getSelectedItem()) + 1) + "");
+                reqStockProduit.next();
+                Integer stockProduit = Integer.parseInt(reqStockProduit.getString(1));
+                // Vérifie si il y a toujours le produit que l'on veut vendre en sotck et que l'on en vend pas plus que ce que l'on a en stock
+                if (stockProduit > 0 && Integer.parseInt(jTextFieldQteVente.getText()) <= stockProduit) {
+                    DAO.getInstance().requeteAction("INSERT INTO facture VALUES('" + java.time.LocalDateTime.now() + "', '" + java.time.LocalDate.now() + "')");
+                    ResultSet facture = DAO.getInstance().requeteSelection("SELECT id_facture FROM facture WHERE date_facture = '" + java.time.LocalDate.now() + "'");
+                    // Insertion dans la table 'vente' du tuple correspondant à une vente d'un produit à un client et vérification pour savoir il y a bien un tuple qui s'est inséré
+                    facture.next();
+                    Integer nombreAjoutVentes = DAO.getInstance().requeteAction("INSERT INTO vente VALUES(null, '" + (laComboBoxClientVente.getIndexOf(laComboBoxClientVente.getSelectedItem()) + 1) + "', '" + Authentification.getIdPersonnel() + "', '" + facture.getString(1) + "')");
+                    if ((nombreAjoutVentes) > 0) {
+                        ResultSet idVente = DAO.getInstance().requeteSelection("SELECT id_vente FROM vente");
+                        idVente.last();
+                        Integer nombreQteVentes = DAO.getInstance().requeteAction("INSERT INTO contenir VALUES('" + idVente.getString(1) + "', '" + (laComboBoxProduitVente.getIndexOf(laComboBoxProduitVente.getSelectedItem()) + 1) + "', '" + jTextFieldQteVente.getText() + "')");
+                        // Diminue le stock d'un produit en vente
+                        Integer modifStockProduit = DAO.getInstance().requeteAction("UPDATE produit SET stock_produit = stock_produit - " + Integer.parseInt(jTextFieldQteVente.getText()) + " WHERE id_produit = " + (laComboBoxProduitVente.getIndexOf(laComboBoxProduitVente.getSelectedItem()) + 1) + "");
+                        // Vérifie si il y a bien un tuple d'insérer dans la table 'contenir' et que le stock du produit à été décrémenter du nombre de produit que l'on a vendu
+                        if (nombreQteVentes > 0 && modifStockProduit > 0) {
+                            JOptionPane.showMessageDialog(this, "Vente ajoutée avec succès !");
+                            System.out.println("Vente ajouté avec succès");
+                            leModelVente.clear();
+                            ResultSet lesVentesQteProduit = DAO.getInstance().requeteSelection("SELECT libelle_produit, contenir.qte FROM contenir INNER JOIN produit ON contenir.id_produit = produit.id_produit");
+                            ResultSet lesVentesClients = DAO.getInstance().requeteSelection("SELECT client.nom, client.prenom, id_facture FROM vente INNER JOIN client ON vente.id_client = client.id_client");
+                            while (lesVentesQteProduit.next() && lesVentesClients.next()) {
+                                leModelVente.addElement(lesVentesQteProduit.getString(1) + " à été vendu " + lesVentesQteProduit.getString(2) + " fois à " + lesVentesClients.getString(1) + " " + lesVentesClients.getString(2) + " le " + lesVentesClients.getString(3));
+                            }
                         }
                     }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Le produit que vous essayez de vendre n'est plus en stock ou vous essayer d'en vendre plus qu'il y en a en stock", "Avertissement", 1);
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(VentePAD.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Veuillez remplir une quantité");
+            JOptionPane.showMessageDialog(this, "Veuillez remplir une quantité", "Avertissement", 3);
         }
     }//GEN-LAST:event_jButtonVendreActionPerformed
 
     private void jButtonActualiserVentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualiserVentesActionPerformed
-        // Bouton pour actualiser la liste des ventes et les combox box avec les informations correspondantes
-        try {
-            // Rempli la combobox des clients en fonction des informations se trouvant dans la table 'client'
-            DefaultComboBoxModel laComboxBoxClientVente = (DefaultComboBoxModel) jComboBoxClientVentes.getModel();
-            ResultSet lesClientsVentes = DAO.getInstance().requeteSelection("SELECT nom, prenom FROM client");
-            laComboxBoxClientVente.removeAllElements();
-            while (lesClientsVentes.next()) {
-                laComboxBoxClientVente.addElement(lesClientsVentes.getString(1) + "  " + lesClientsVentes.getString(2));
-            }
-            // Rempli la combobox des produits en fonction des informations se trouvant dans la table 'produit'
-            DefaultComboBoxModel laComboBoxProduitVente = (DefaultComboBoxModel) jComboBoxProduitVentes.getModel();
-            ResultSet lesProduitsVentes = DAO.getInstance().requeteSelection("SELECT * FROM produit");
-            laComboBoxProduitVente.removeAllElements();
-            while (lesProduitsVentes.next()) {
-                laComboBoxProduitVente.addElement(lesProduitsVentes.getString(2));
-            }
-            // Rempli la liste des ventes en fonction des informations se trouvant dans la table 'vente'
-            DefaultListModel leModelVente = (DefaultListModel) jListListeVente.getModel();
-            leModelVente.clear();
-            ResultSet lesVentesQteProduit = DAO.getInstance().requeteSelection("SELECT libelle_produit, contenir.qte FROM contenir INNER JOIN produit ON contenir.id_produit = produit.id_produit");
-            ResultSet lesVentesClients = DAO.getInstance().requeteSelection("SELECT client.nom, client.prenom, id_facture FROM vente INNER JOIN client ON vente.id_client = client.id_client");
-            while (lesVentesQteProduit.next() && lesVentesClients.next()) {
-                leModelVente.addElement(lesVentesQteProduit.getString(1) + " à été vendu " + lesVentesQteProduit.getString(2) + " fois à " + lesVentesClients.getString(1) + " " + lesVentesClients.getString(2) + " le " + lesVentesClients.getString(3));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(VentePAD.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        remplirListeVente();
     }//GEN-LAST:event_jButtonActualiserVentesActionPerformed
 
     private void jComboBoxProduitVentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxProduitVentesActionPerformed
@@ -223,7 +207,7 @@ public class VentePAD extends javax.swing.JPanel {
 
     /**
      * Méthode servant à initialiser la liste des ventes pour la remplir en
-     * fonction des données présente sur la BDD
+     * fonction des données présentes sur la BDD
      */
     public void remplirListeVente() {
         try {

@@ -172,7 +172,9 @@ public class AccueilAdmin extends javax.swing.JFrame {
         );
         jPanelStatistiquesLayout.setVerticalGroup(
             jPanelStatistiquesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(statistiques2, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+            .addGroup(jPanelStatistiquesLayout.createSequentialGroup()
+                .addComponent(statistiques2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 171, Short.MAX_VALUE))
         );
 
         jTabbedPaneAccueilAgent.addTab("Statistiques", jPanelStatistiques);

@@ -94,7 +94,7 @@ public class DAO {
     /**
      * Requête SQL d'action
      *
-     * @param sql Requête SQL (INSERT, etc...)
+     * @param sql Requête SQL (INSERT, ALTER, etc...)
      * @return
      */
     public Integer requeteAction(String sql) {

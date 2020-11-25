@@ -35,10 +35,11 @@ public class Statistiques extends javax.swing.JPanel {
         jLabelTotalProduitVendu = new javax.swing.JLabel();
         jButtonActualiserMontant = new javax.swing.JButton();
         jLabelMontantProduitVendu = new javax.swing.JLabel();
+        jLabelMontantSurUneAnnee = new javax.swing.JLabel();
 
         jLabelTotalProduitVendu.setText("Nombre total de produit vendu :");
 
-        jButtonActualiserMontant.setText("Actualiser le nombre total de produit vendu");
+        jButtonActualiserMontant.setText("Actualiser les statistiques");
         jButtonActualiserMontant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonActualiserMontantActionPerformed(evt);
@@ -47,28 +48,33 @@ public class Statistiques extends javax.swing.JPanel {
 
         jLabelMontantProduitVendu.setText("Montant total des produits vendus :");
 
+        jLabelMontantSurUneAnnee.setText("Montant des produits vendus en :");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelMontantSurUneAnnee)
                     .addComponent(jLabelMontantProduitVendu)
                     .addComponent(jButtonActualiserMontant)
                     .addComponent(jLabelTotalProduitVendu))
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addContainerGap(200, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonActualiserMontant)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addComponent(jLabelTotalProduitVendu)
                 .addGap(18, 18, 18)
                 .addComponent(jLabelMontantProduitVendu)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabelMontantSurUneAnnee)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(jButtonActualiserMontant)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -78,7 +84,8 @@ public class Statistiques extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonActualiserMontantActionPerformed
 
     /**
-     * Méthode servant à afficher le nombre des produits vendus
+     * Méthode servant à afficher la quantité totale des produits vendus, le
+     * montant global et la montant sur une année
      */
     public void actualiserMontant() {
 
@@ -86,9 +93,17 @@ public class Statistiques extends javax.swing.JPanel {
             ResultSet totalProduitVendu = DAO.getInstance().requeteSelection("SELECT SUM(qte) FROM contenir");
             totalProduitVendu.next();
             jLabelTotalProduitVendu.setText("Nombre total de produit vendu : " + totalProduitVendu.getString(1));
-            ResultSet montantProduitVendu = DAO.getInstance().requeteSelection("SELECT SUM(qte*tarif_produit) as montant FROM contenir INNER JOIN produit ON contenir.id_produit = produit.id_produit");
+            ResultSet montantProduitVendu = DAO.getInstance().requeteSelection("SELECT SUM(qte*tarif_produit) AS montant_total FROM contenir INNER JOIN produit ON contenir.id_produit = produit.id_produit");
             montantProduitVendu.next();
             jLabelMontantProduitVendu.setText("Montant total des produits vendus : " + montantProduitVendu.getString(1) + "€");
+            ResultSet ventePeriode = DAO.getInstance().requeteSelection("SELECT SUM(qte*tarif_produit) AS montant_sur_une_annee FROM contenir INNER JOIN produit ON contenir.id_produit = produit.id_produit INNER JOIN vente ON contenir.id_vente = vente.id_vente WHERE id_facture BETWEEN '" + java.time.Year.now() + "-01-01' AND '" + java.time.Year.now() + "-12-31'");
+            ventePeriode.next();
+            // Vérifie si il y a un montant de produit vendu sur une année
+            if (ventePeriode.getString(1) == null) {
+                jLabelMontantSurUneAnnee.setText("Montant des produits vendus en " + java.time.Year.now() + " : 0€");
+            } else {
+                jLabelMontantSurUneAnnee.setText("Montant des produits vendus en " + java.time.Year.now() + " : " + ventePeriode.getString(1) + "€");
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Statistiques.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -97,6 +112,7 @@ public class Statistiques extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonActualiserMontant;
     private javax.swing.JLabel jLabelMontantProduitVendu;
+    private javax.swing.JLabel jLabelMontantSurUneAnnee;
     private javax.swing.JLabel jLabelTotalProduitVendu;
     // End of variables declaration//GEN-END:variables
 }

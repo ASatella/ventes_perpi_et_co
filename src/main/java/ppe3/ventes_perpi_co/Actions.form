@@ -353,9 +353,7 @@
                           <Component id="jScrollPaneTableauAgent" alignment="0" pref="542" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jButtonRechargerTableauAgent" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButtonModifierAgent" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="220" max="-2" attributes="0"/>
+                              <EmptySpace min="220" pref="371" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -367,10 +365,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jScrollPaneTableauAgent" pref="265" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButtonRechargerTableauAgent" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonModifierAgent" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jButtonRechargerTableauAgent" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -401,14 +396,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRechargerTableauAgentActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonModifierAgent">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Modifier un agent"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonModifierAgentActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
