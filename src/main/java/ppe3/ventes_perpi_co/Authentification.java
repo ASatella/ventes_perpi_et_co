@@ -53,6 +53,7 @@ public class Authentification extends javax.swing.JFrame {
         jPasswordFieldMdpSGBD = new javax.swing.JPasswordField();
         jLabelNomServeur = new javax.swing.JLabel();
         jLabelPort = new javax.swing.JLabel();
+        jButtonPreremplissage = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Perpi&Co");
@@ -93,6 +94,13 @@ public class Authentification extends javax.swing.JFrame {
         jLabelNomServeur.setText("IP/Nom du serveur");
 
         jLabelPort.setText("Port");
+
+        jButtonPreremplissage.setText("Préremplissage");
+        jButtonPreremplissage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPreremplissageActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -137,7 +145,8 @@ public class Authentification extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(jButtonConnexion)
-                                    .addGap(69, 69, 69))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jButtonPreremplissage))
                                 .addComponent(jLabelEtat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(75, 75, 75)
@@ -177,7 +186,9 @@ public class Authentification extends javax.swing.JFrame {
                     .addComponent(jLabelMDPPersonnel)
                     .addComponent(jPasswordFieldMDPPersonnel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonConnexion)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonConnexion)
+                    .addComponent(jButtonPreremplissage))
                 .addGap(11, 11, 11)
                 .addComponent(jLabelEtat)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -242,6 +253,15 @@ public class Authentification extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonQuitterActionPerformed
 
+    private void jButtonPreremplissageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPreremplissageActionPerformed
+        // TODO add your handling code here:
+        jTextFieldNomServeur.setText("10.0.10.141");
+        jTextFieldPort.setText("3306");
+        jTextFieldNomBDD.setText("ppe3");
+        jTextFieldUtilisateurSGBD.setText("root");
+        jPasswordFieldMdpSGBD.setText("root");
+    }//GEN-LAST:event_jButtonPreremplissageActionPerformed
+
     /**
      * Méthode permettant de définir l'id du personnel
      *
@@ -297,6 +317,7 @@ public class Authentification extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonConnexion;
+    private javax.swing.JButton jButtonPreremplissage;
     private javax.swing.JButton jButtonQuitter;
     private javax.swing.JLabel jLabelEtat;
     private javax.swing.JLabel jLabelMDPPersonnel;
