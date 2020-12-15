@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,6 +37,23 @@ public class Authentification extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialogCreerUtilisateur = new javax.swing.JDialog();
+        jLabelAjoutClient = new javax.swing.JLabel();
+        jLabelNomUtilisateur = new javax.swing.JLabel();
+        jLabelMDPAgent = new javax.swing.JLabel();
+        jTextFieldNomUtilisateurAgent = new javax.swing.JTextField();
+        jTextFieldMDPAgent = new javax.swing.JTextField();
+        jLabelPrenomAgent = new javax.swing.JLabel();
+        jLabelNomAgent = new javax.swing.JLabel();
+        jLabelNumTelAgent = new javax.swing.JLabel();
+        jLabelCourriel = new javax.swing.JLabel();
+        jTextFieldPrenomAgent = new javax.swing.JTextField();
+        jTextFieldNomAgent = new javax.swing.JTextField();
+        jTextFieldCourriel = new javax.swing.JTextField();
+        jTextFieldNumTelAgent = new javax.swing.JTextField();
+        jButtonCreerUtilisateur = new javax.swing.JButton();
+        jButtonFermerCreerUtilisateur = new javax.swing.JButton();
+        jLabelErreurCreationUtilisateur = new javax.swing.JLabel();
         jLabelTitre = new javax.swing.JLabel();
         jLabelUtilisateurPersonnel = new javax.swing.JLabel();
         jTextFieldUtilisateurPersonnel = new javax.swing.JTextField();
@@ -54,6 +73,124 @@ public class Authentification extends javax.swing.JFrame {
         jLabelNomServeur = new javax.swing.JLabel();
         jLabelPort = new javax.swing.JLabel();
         jButtonPreremplissage = new javax.swing.JButton();
+        jButtonCreationUtilisateur = new javax.swing.JButton();
+
+        jLabelAjoutClient.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabelAjoutClient.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelAjoutClient.setText("Création d'un compte agent");
+        jLabelAjoutClient.setName(""); // NOI18N
+
+        jLabelNomUtilisateur.setText("Nom d'utilisateur :");
+
+        jLabelMDPAgent.setText("Mot de passe :");
+
+        jLabelPrenomAgent.setText("Prénom d'agent :");
+
+        jLabelNomAgent.setText("Nom d'agent :");
+
+        jLabelNumTelAgent.setText("Num. Tél. Agent :");
+
+        jLabelCourriel.setText("Courriel :");
+
+        jButtonCreerUtilisateur.setText("Créer l'utilisateur");
+        jButtonCreerUtilisateur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCreerUtilisateurActionPerformed(evt);
+            }
+        });
+
+        jButtonFermerCreerUtilisateur.setText("Fermer");
+        jButtonFermerCreerUtilisateur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFermerCreerUtilisateurActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialogCreerUtilisateurLayout = new javax.swing.GroupLayout(jDialogCreerUtilisateur.getContentPane());
+        jDialogCreerUtilisateur.getContentPane().setLayout(jDialogCreerUtilisateurLayout);
+        jDialogCreerUtilisateurLayout.setHorizontalGroup(
+            jDialogCreerUtilisateurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogCreerUtilisateurLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelErreurCreationUtilisateur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jDialogCreerUtilisateurLayout.createSequentialGroup()
+                .addGroup(jDialogCreerUtilisateurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogCreerUtilisateurLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jDialogCreerUtilisateurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelAjoutClient)
+                            .addGroup(jDialogCreerUtilisateurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDialogCreerUtilisateurLayout.createSequentialGroup()
+                                    .addComponent(jLabelPrenomAgent)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jTextFieldPrenomAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDialogCreerUtilisateurLayout.createSequentialGroup()
+                                    .addGroup(jDialogCreerUtilisateurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabelNomAgent)
+                                        .addComponent(jLabelCourriel))
+                                    .addGap(25, 25, 25)
+                                    .addGroup(jDialogCreerUtilisateurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jTextFieldNomAgent)
+                                        .addComponent(jTextFieldCourriel)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jDialogCreerUtilisateurLayout.createSequentialGroup()
+                                    .addGroup(jDialogCreerUtilisateurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabelNomUtilisateur)
+                                        .addComponent(jLabelMDPAgent))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jDialogCreerUtilisateurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jTextFieldMDPAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTextFieldNomUtilisateurAgent))))))
+                    .addGroup(jDialogCreerUtilisateurLayout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabelNumTelAgent)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldNumTelAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDialogCreerUtilisateurLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jButtonCreerUtilisateur))
+                    .addGroup(jDialogCreerUtilisateurLayout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(jButtonFermerCreerUtilisateur)))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jDialogCreerUtilisateurLayout.setVerticalGroup(
+            jDialogCreerUtilisateurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogCreerUtilisateurLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelAjoutClient)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jDialogCreerUtilisateurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNomUtilisateur)
+                    .addComponent(jTextFieldNomUtilisateurAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDialogCreerUtilisateurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelMDPAgent)
+                    .addComponent(jTextFieldMDPAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDialogCreerUtilisateurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelPrenomAgent)
+                    .addComponent(jTextFieldPrenomAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDialogCreerUtilisateurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelNomAgent)
+                    .addComponent(jTextFieldNomAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jDialogCreerUtilisateurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelCourriel)
+                    .addComponent(jTextFieldCourriel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addGroup(jDialogCreerUtilisateurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNumTelAgent)
+                    .addComponent(jTextFieldNumTelAgent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelErreurCreationUtilisateur, javax.swing.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonCreerUtilisateur)
+                .addGap(4, 4, 4)
+                .addComponent(jButtonFermerCreerUtilisateur)
+                .addGap(8, 8, 8))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Perpi&Co");
@@ -102,12 +239,26 @@ public class Authentification extends javax.swing.JFrame {
             }
         });
 
+        jButtonCreationUtilisateur.setText("Créer un utilisateur");
+        jButtonCreationUtilisateur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCreationUtilisateurActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 11, Short.MAX_VALUE)
+                .addGap(88, 88, 88)
+                .addComponent(jButtonQuitter, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabelEtat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,17 +292,13 @@ public class Authentification extends javax.swing.JFrame {
                             .addComponent(jLabelTitre, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(9, 9, 9))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jButtonConnexion)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jButtonPreremplissage))
-                                .addComponent(jLabelEtat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(75, 75, 75)
-                                .addComponent(jButtonQuitter, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())))
+                        .addComponent(jButtonConnexion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonPreremplissage)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButtonCreationUtilisateur)
+                        .addGap(58, 58, 58))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,9 +336,11 @@ public class Authentification extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonConnexion)
                     .addComponent(jButtonPreremplissage))
-                .addGap(11, 11, 11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonCreationUtilisateur)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelEtat)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonQuitter)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -236,7 +385,7 @@ public class Authentification extends javax.swing.JFrame {
                             jLabelEtat.setText("Veuillez vérifier les informations saisies");
                         }
                     } else {
-                        jLabelEtat.setText("Veuillez remplir tout les champs");
+                        jLabelEtat.setText("Veuillez remplir tous les champs");
                     }
                 } else {
                     jLabelEtat.setText("Veuillez vérifier les informations saisies");
@@ -245,7 +394,7 @@ public class Authentification extends javax.swing.JFrame {
                 Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            jLabelEtat.setText("Veuillez remplir tout les champs");
+            jLabelEtat.setText("Veuillez remplir tous les champs");
         }
     }//GEN-LAST:event_jButtonConnexionActionPerformed
 
@@ -261,6 +410,43 @@ public class Authentification extends javax.swing.JFrame {
         jTextFieldUtilisateurSGBD.setText("root");
         jPasswordFieldMdpSGBD.setText("root");
     }//GEN-LAST:event_jButtonPreremplissageActionPerformed
+
+    private void jButtonCreationUtilisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreationUtilisateurActionPerformed
+        jDialogCreerUtilisateur.setVisible(true);
+        jDialogCreerUtilisateur.setResizable(true);
+        jDialogCreerUtilisateur.setSize(230, 429);
+        jDialogCreerUtilisateur.setLocationRelativeTo(this);
+    }//GEN-LAST:event_jButtonCreationUtilisateurActionPerformed
+
+    private void jButtonFermerCreerUtilisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFermerCreerUtilisateurActionPerformed
+        // TODO add your handling code here:
+        jDialogCreerUtilisateur.dispose();
+    }//GEN-LAST:event_jButtonFermerCreerUtilisateurActionPerformed
+
+    private void jButtonCreerUtilisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreerUtilisateurActionPerformed
+        // Connexion BDD pour la création de l'utilisateur
+        DAO.setNomServeur("10.0.10.141");
+        DAO.setPort("3306");
+        DAO.setNomBdd("ppe3");
+        DAO.setNomUtilisateur("root");
+        DAO.setMotDePasse("root");
+        // Vérifie si tous les champs nécessaire à la création d'un utilisateur sont remplis
+        if ("".equals(jTextFieldNomUtilisateurAgent.getText()) && "".equals(jTextFieldMDPAgent.getText()) && "".equals(jTextFieldPrenomAgent.getText()) && "".equals(jTextFieldNomAgent.getText()) && "".equals(jTextFieldCourriel.getText()) && "".equals(jTextFieldNumTelAgent.getText())) {
+            jLabelErreurCreationUtilisateur.setText("Veuillez remplir tous les champs");
+        } else {
+            try {
+                // Requête SQL pour insérer les valeurs des rentrés dans les champs dans la table 'personnel'
+                Integer nombreAjoutUtilisateur = DAO.getInstance().requeteAction("INSERT INTO personnel VALUES(null, '" + jTextFieldNomUtilisateurAgent.getText() + "', '" + jTextFieldMDPAgent.getText() + "', '" + jTextFieldNomAgent.getText() + "', '" + jTextFieldPrenomAgent.getText() + "', '" + jTextFieldCourriel.getText() + "', '" + jTextFieldNumTelAgent.getText() + "', 1)");
+                if (nombreAjoutUtilisateur > 0) {
+                    jDialogCreerUtilisateur.dispose();
+                    JOptionPane.showMessageDialog(jLabelNomUtilisateur, "Utilisateur ajouté avec succès");
+                    System.out.println("Utilisateur ajouté avec succès");
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(GestionClient.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jButtonCreerUtilisateurActionPerformed
 
     /**
      * Méthode permettant de définir l'id du personnel
@@ -317,22 +503,40 @@ public class Authentification extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonConnexion;
+    private javax.swing.JButton jButtonCreationUtilisateur;
+    private javax.swing.JButton jButtonCreerUtilisateur;
+    private javax.swing.JButton jButtonFermerCreerUtilisateur;
     private javax.swing.JButton jButtonPreremplissage;
     private javax.swing.JButton jButtonQuitter;
+    private javax.swing.JDialog jDialogCreerUtilisateur;
+    private javax.swing.JLabel jLabelAjoutClient;
+    private javax.swing.JLabel jLabelCourriel;
+    private javax.swing.JLabel jLabelErreurCreationUtilisateur;
     private javax.swing.JLabel jLabelEtat;
+    private javax.swing.JLabel jLabelMDPAgent;
     private javax.swing.JLabel jLabelMDPPersonnel;
     private javax.swing.JLabel jLabelMdpSGBD;
+    private javax.swing.JLabel jLabelNomAgent;
     private javax.swing.JLabel jLabelNomBDD;
     private javax.swing.JLabel jLabelNomServeur;
+    private javax.swing.JLabel jLabelNomUtilisateur;
+    private javax.swing.JLabel jLabelNumTelAgent;
     private javax.swing.JLabel jLabelPort;
+    private javax.swing.JLabel jLabelPrenomAgent;
     private javax.swing.JLabel jLabelTitre;
     private javax.swing.JLabel jLabelUtilisateurPersonnel;
     private javax.swing.JLabel jLabelUtilisateurSGBD;
     private javax.swing.JPasswordField jPasswordFieldMDPPersonnel;
     private javax.swing.JPasswordField jPasswordFieldMdpSGBD;
+    private javax.swing.JTextField jTextFieldCourriel;
+    private javax.swing.JTextField jTextFieldMDPAgent;
+    private javax.swing.JTextField jTextFieldNomAgent;
     private javax.swing.JTextField jTextFieldNomBDD;
     private javax.swing.JTextField jTextFieldNomServeur;
+    private javax.swing.JTextField jTextFieldNomUtilisateurAgent;
+    private javax.swing.JTextField jTextFieldNumTelAgent;
     private javax.swing.JTextField jTextFieldPort;
+    private javax.swing.JTextField jTextFieldPrenomAgent;
     private javax.swing.JTextField jTextFieldUtilisateurPersonnel;
     private javax.swing.JTextField jTextFieldUtilisateurSGBD;
     // End of variables declaration//GEN-END:variables
