@@ -499,10 +499,11 @@ public class GestionPAD extends javax.swing.JPanel {
             }
             DefaultComboBoxModel laComboBoxPopularite = (DefaultComboBoxModel) jComboBoxPopulariteProduit.getModel();
             laComboBoxPopularite.removeAllElements();
-            for (int i = 1; i <= 5; i++) {
-                String popularite = "*";
-                laComboBoxPopularite.addElement(popularite.repeat(i));
-            }
+            laComboBoxPopularite.addElement("*");
+            laComboBoxPopularite.addElement("**");
+            laComboBoxPopularite.addElement("***");
+            laComboBoxPopularite.addElement("****");
+            laComboBoxPopularite.addElement("*****");
         } catch (SQLException ex) {
             Logger.getLogger(GestionPAD.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -518,10 +519,11 @@ public class GestionPAD extends javax.swing.JPanel {
                 jDialogModifProduit.setLocationRelativeTo(this);
                 DefaultComboBoxModel laComboBoxPopularite = (DefaultComboBoxModel) jComboBoxMPopulariteProduit.getModel();
                 laComboBoxPopularite.removeAllElements();
-                for (int i = 1; i <= 5; i++) {
-                    String popularite = "*";
-                    laComboBoxPopularite.addElement(popularite.repeat(i));
-                }
+                laComboBoxPopularite.addElement("*");
+                laComboBoxPopularite.addElement("**");
+                laComboBoxPopularite.addElement("***");
+                laComboBoxPopularite.addElement("****");
+                laComboBoxPopularite.addElement("*****");
                 DefaultComboBoxModel laComboBoxCategorie = (DefaultComboBoxModel) jComboBoxMChoixCategorie.getModel();
                 laComboBoxCategorie.removeAllElements();
                 Integer infoProduit = jListListeProduit.getSelectedIndex();
@@ -540,7 +542,7 @@ public class GestionPAD extends javax.swing.JPanel {
                 Logger.getLogger(GestionPAD.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Veuillez séléctionner un produit à modifier","Avertissement", 3);
+            JOptionPane.showMessageDialog(this, "Veuillez séléctionner un produit à modifier", "Avertissement", 3);
         }
     }//GEN-LAST:event_jButtonModifierProduitActionPerformed
 
