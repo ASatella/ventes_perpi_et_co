@@ -63,7 +63,6 @@ public class GestionClient extends javax.swing.JPanel {
         jLabelErreurModifClient = new javax.swing.JLabel();
         jButtonAjoutClient = new javax.swing.JButton();
         jButtonModifierClient = new javax.swing.JButton();
-        jButtonAfficherListeClient = new javax.swing.JButton();
         jScrollPaneListeClient = new javax.swing.JScrollPane();
         jListListeClient = new javax.swing.JList<>();
 
@@ -284,13 +283,6 @@ public class GestionClient extends javax.swing.JPanel {
             }
         });
 
-        jButtonAfficherListeClient.setText("Recharger les clients");
-        jButtonAfficherListeClient.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAfficherListeClientActionPerformed(evt);
-            }
-        });
-
         jListListeClient.setModel(new DefaultListModel()
         );
         jListListeClient.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -308,8 +300,7 @@ public class GestionClient extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonAjoutClient, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonModifierClient, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonAfficherListeClient))
+                    .addComponent(jButtonModifierClient, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addComponent(jScrollPaneListeClient, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -323,8 +314,6 @@ public class GestionClient extends javax.swing.JPanel {
                         .addComponent(jButtonAjoutClient)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonModifierClient)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonAfficherListeClient)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPaneListeClient, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
                 .addContainerGap())
@@ -361,11 +350,6 @@ public class GestionClient extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Veuillez sélectionner un client à modifier", "Avertissement", 3);
         }
     }//GEN-LAST:event_jButtonModifierClientActionPerformed
-
-    private void jButtonAfficherListeClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAfficherListeClientActionPerformed
-        //Bouton pour actualiser la liste des clients
-        remplirListeClient();
-    }//GEN-LAST:event_jButtonAfficherListeClientActionPerformed
 
     private void jListListeClientComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jListListeClientComponentShown
 
@@ -450,7 +434,6 @@ public class GestionClient extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAfficherListeClient;
     private javax.swing.JButton jButtonAjoutClient;
     private javax.swing.JButton jButtonAjoutUnClient;
     private javax.swing.JButton jButtonFermerAjoutClient;

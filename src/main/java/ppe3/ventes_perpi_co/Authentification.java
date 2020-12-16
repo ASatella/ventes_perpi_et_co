@@ -404,11 +404,11 @@ public class Authentification extends javax.swing.JFrame {
 
     private void jButtonPreremplissageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPreremplissageActionPerformed
         // TODO add your handling code here:
-        jTextFieldNomServeur.setText("10.0.10.141");
+        jTextFieldNomServeur.setText("localhost");
         jTextFieldPort.setText("3306");
-        jTextFieldNomBDD.setText("ppe3");
-        jTextFieldUtilisateurSGBD.setText("root");
-        jPasswordFieldMdpSGBD.setText("root");
+        jTextFieldNomBDD.setText("ventes");
+        jTextFieldUtilisateurSGBD.setText("roota");
+        jPasswordFieldMdpSGBD.setText("roota");
     }//GEN-LAST:event_jButtonPreremplissageActionPerformed
 
     private void jButtonCreationUtilisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreationUtilisateurActionPerformed
@@ -429,7 +429,7 @@ public class Authentification extends javax.swing.JFrame {
         DAO.setPort("3306");
         DAO.setNomBdd("ppe3");
         DAO.setNomUtilisateur("root");
-        DAO.setMotDePasse("root");
+        DAO.setMotDePasse("roots");
         // Vérifie si tous les champs nécessaire à la création d'un utilisateur sont remplis
         if ("".equals(jTextFieldNomUtilisateurAgent.getText()) && "".equals(jTextFieldMDPAgent.getText()) && "".equals(jTextFieldPrenomAgent.getText()) && "".equals(jTextFieldNomAgent.getText()) && "".equals(jTextFieldCourriel.getText()) && "".equals(jTextFieldNumTelAgent.getText())) {
             jLabelErreurCreationUtilisateur.setText("Veuillez remplir tous les champs");

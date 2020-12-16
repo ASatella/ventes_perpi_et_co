@@ -5,8 +5,18 @@
  */
 package ppe3.ventes_perpi_co;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.draw.LineSeparator;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -44,12 +54,18 @@ public class VentePAD extends javax.swing.JPanel {
         jLabelProduitVentes = new javax.swing.JLabel();
         jTextFieldQteVente = new javax.swing.JTextField();
         jLabelQteVente = new javax.swing.JLabel();
-        jButtonActualiserVentes = new javax.swing.JButton();
+        jButtonGenererFacture = new javax.swing.JButton();
+        jButtonFiltrerClient = new javax.swing.JButton();
 
         jListListeVente.setModel(new DefaultListModel());
         jScrollPaneClientsVentes.setViewportView(jListListeVente);
 
         jComboBoxClientVentes.setModel(new DefaultComboBoxModel());
+        jComboBoxClientVentes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBoxClientVentesMouseClicked(evt);
+            }
+        });
         jComboBoxClientVentes.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 jComboBoxClientVentesComponentShown(evt);
@@ -81,10 +97,17 @@ public class VentePAD extends javax.swing.JPanel {
 
         jLabelQteVente.setText("Quantité :");
 
-        jButtonActualiserVentes.setText("Actualiser les ventes effectuées");
-        jButtonActualiserVentes.addActionListener(new java.awt.event.ActionListener() {
+        jButtonGenererFacture.setText("Générer une facture");
+        jButtonGenererFacture.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonActualiserVentesActionPerformed(evt);
+                jButtonGenererFactureActionPerformed(evt);
+            }
+        });
+
+        jButtonFiltrerClient.setText("Filtrer les ventes par clients");
+        jButtonFiltrerClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFiltrerClientActionPerformed(evt);
             }
         });
 
@@ -93,27 +116,33 @@ public class VentePAD extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelClientVentes)
-                            .addComponent(jLabelProduitVentes))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxProduitVentes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBoxClientVentes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabelQteVente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonActualiserVentes)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextFieldQteVente, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonVendre)))))
-                .addGap(18, 18, 18)
+                                .addGap(23, 23, 23)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabelClientVentes)
+                                    .addComponent(jLabelProduitVentes))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBoxProduitVentes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBoxClientVentes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(jLabelQteVente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jTextFieldQteVente, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButtonVendre))
+                                    .addComponent(jButtonGenererFacture))
+                                .addGap(30, 30, 30)))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButtonFiltrerClient)
+                        .addGap(57, 57, 57)))
                 .addComponent(jScrollPaneClientsVentes, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -137,7 +166,9 @@ public class VentePAD extends javax.swing.JPanel {
                             .addComponent(jTextFieldQteVente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonVendre))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonActualiserVentes)
+                        .addComponent(jButtonFiltrerClient)
+                        .addGap(13, 13, 13)
+                        .addComponent(jButtonGenererFacture)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(6, 6, 6))
         );
@@ -148,7 +179,7 @@ public class VentePAD extends javax.swing.JPanel {
     }//GEN-LAST:event_jComboBoxClientVentesComponentShown
 
     private void jComboBoxClientVentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxClientVentesActionPerformed
-
+        // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxClientVentesActionPerformed
 
     private void jButtonVendreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVendreActionPerformed
@@ -197,13 +228,75 @@ public class VentePAD extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButtonVendreActionPerformed
 
-    private void jButtonActualiserVentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualiserVentesActionPerformed
-        remplirListeVente();
-    }//GEN-LAST:event_jButtonActualiserVentesActionPerformed
-
     private void jComboBoxProduitVentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxProduitVentesActionPerformed
 
     }//GEN-LAST:event_jComboBoxProduitVentesActionPerformed
+
+    private void jButtonGenererFactureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenererFactureActionPerformed
+        // Instanciation d'un nouveau document
+        Document facture = new Document();
+        DefaultListModel leModelVente = (DefaultListModel) jListListeVente.getModel();
+        try {
+            if (!jListListeVente.isSelectionEmpty()) {
+                if (!facture.isOpen()) {
+                    String nomClient = jComboBoxClientVentes.getItemAt(jComboBoxClientVentes.getSelectedIndex());
+                    String infoFacture = (String) leModelVente.getElementAt(jListListeVente.getSelectedIndex());
+                    PdfWriter pdfWriter = PdfWriter.getInstance(facture, new FileOutputStream("facture_" + java.time.LocalDate.now() + "_" + nomClient + ".pdf"));
+                    // Ouverture de notre document "facture" pour écrire à l'intérieur
+                    facture.addTitle("Facture du " + java.time.LocalDate.now() + " à " + nomClient);
+                    facture.open();
+                    facture.add(new Paragraph("Facture du " + java.time.LocalDate.now()));
+                    facture.add(new Paragraph(" "));
+                    facture.add(new LineSeparator());
+                    facture.add(new Paragraph("Client : " + nomClient));
+                    facture.add(new Paragraph(" "));
+                    facture.add(new LineSeparator());
+                    PdfPTable tableauEntete = new PdfPTable(3);
+                    PdfPTable tableauCellule = new PdfPTable(3);
+                    tableauEntete.setWidthPercentage(100);
+                    tableauEntete.setSpacingBefore(10f);
+                    tableauEntete.setSpacingAfter(10f);
+                    PdfPCell nomProduitEntete = new PdfPCell(new Paragraph("Nom du produit"));
+                    PdfPCell quantiteProduitEntete = new PdfPCell(new Paragraph("Quantité"));
+                    PdfPCell sommeProduitEntete = new PdfPCell(new Paragraph("Prix à l'unité"));
+                    tableauEntete.addCell(nomProduitEntete);
+                    tableauEntete.addCell(quantiteProduitEntete);
+                    tableauEntete.addCell(sommeProduitEntete);
+                    facture.add(tableauEntete);
+                    facture.add(tableauCellule);
+                    facture.close();
+                    pdfWriter.close();
+                    if (pdfWriter.isCloseStream()) {
+                        JOptionPane.showMessageDialog(this, "Facture créée avec succès");
+                    }
+
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Vous devez sélectionner une vente dans la liste pour en faire la facture");
+            }
+        } catch (DocumentException | FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_jButtonGenererFactureActionPerformed
+
+    private void jComboBoxClientVentesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBoxClientVentesMouseClicked
+
+    }//GEN-LAST:event_jComboBoxClientVentesMouseClicked
+
+    private void jButtonFiltrerClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFiltrerClientActionPerformed
+        // TODO add your handling code here:
+        try {
+            DefaultListModel leModelVente = (DefaultListModel) jListListeVente.getModel();
+            Integer idClient = jComboBoxClientVentes.getSelectedIndex() + 1;
+            leModelVente.clear();
+            ResultSet lesVentesQteProduit = DAO.getInstance().requeteSelection("SELECT libelle_produit, contenir.qte FROM contenir INNER JOIN produit ON contenir.id_produit = produit.id_produit");
+            ResultSet lesVentesClients = DAO.getInstance().requeteSelection("SELECT client.nom, client.prenom, id_facture FROM vente INNER JOIN client ON vente.id_client = client.id_client WHERE client.id_client = " + idClient);
+            while (lesVentesQteProduit.next() && lesVentesClients.next()) {
+                leModelVente.addElement(lesVentesQteProduit.getString(1) + " à été vendu " + lesVentesQteProduit.getString(2) + " fois à " + lesVentesClients.getString(1) + " " + lesVentesClients.getString(2) + " le " + lesVentesClients.getString(3));
+            }
+        } catch (SQLException e) {
+        }
+    }//GEN-LAST:event_jButtonFiltrerClientActionPerformed
 
     /**
      * Méthode servant à initialiser la liste des ventes pour la remplir en
@@ -225,7 +318,7 @@ public class VentePAD extends javax.swing.JPanel {
             while (lesProduitsVentes.next()) {
                 laComboBoxProduitVente.addElement(lesProduitsVentes.getString(2));
             }
-            // Rempli la liste des ventes en fonction des informations se trouvant dans la table 'vente'
+            // Rempli la liste des ventes en fonction des informations se trouvant dans la table 'vente' et du client sélectionné dans la combobox
             DefaultListModel leModelVente = (DefaultListModel) jListListeVente.getModel();
             leModelVente.clear();
             ResultSet lesVentesQteProduit = DAO.getInstance().requeteSelection("SELECT libelle_produit, contenir.qte FROM contenir INNER JOIN produit ON contenir.id_produit = produit.id_produit");
@@ -239,7 +332,8 @@ public class VentePAD extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonActualiserVentes;
+    private javax.swing.JButton jButtonFiltrerClient;
+    private javax.swing.JButton jButtonGenererFacture;
     private javax.swing.JButton jButtonVendre;
     private javax.swing.JComboBox<String> jComboBoxClientVentes;
     private javax.swing.JComboBox<String> jComboBoxProduitVentes;
