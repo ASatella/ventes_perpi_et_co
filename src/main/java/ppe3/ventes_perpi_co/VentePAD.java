@@ -16,7 +16,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -213,7 +212,7 @@ public class VentePAD extends javax.swing.JPanel {
                             ResultSet lesVentesQteProduit = DAO.getInstance().requeteSelection("SELECT libelle_produit, contenir.qte FROM contenir INNER JOIN produit ON contenir.id_produit = produit.id_produit");
                             ResultSet lesVentesClients = DAO.getInstance().requeteSelection("SELECT client.nom, client.prenom, id_facture FROM vente INNER JOIN client ON vente.id_client = client.id_client");
                             while (lesVentesQteProduit.next() && lesVentesClients.next()) {
-                                leModelVente.addElement(lesVentesQteProduit.getString(1) + " à été vendu " + lesVentesQteProduit.getString(2) + " fois à " + lesVentesClients.getString(1) + " " + lesVentesClients.getString(2) + " le " + lesVentesClients.getString(3));
+                                leModelVente.addElement(lesVentesQteProduit.getString(1) + "  à été vendu  " + lesVentesQteProduit.getString(2) + "  fois à  " + lesVentesClients.getString(1) + "  " + lesVentesClients.getString(2) + "  le  " + lesVentesClients.getString(3));
                             }
                         }
                     }
@@ -235,12 +234,12 @@ public class VentePAD extends javax.swing.JPanel {
     private void jButtonGenererFactureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenererFactureActionPerformed
         // Instanciation d'un nouveau document
         Document facture = new Document();
-        DefaultListModel leModelVente = (DefaultListModel) jListListeVente.getModel();
         try {
             if (!jListListeVente.isSelectionEmpty()) {
                 if (!facture.isOpen()) {
                     String nomClient = jComboBoxClientVentes.getItemAt(jComboBoxClientVentes.getSelectedIndex());
-                    String infoFacture = (String) leModelVente.getElementAt(jListListeVente.getSelectedIndex());
+                    String infoFacture = jListListeVente.getSelectedValue();
+                    String[] infosFacture = infoFacture.split("  ");
                     PdfWriter pdfWriter = PdfWriter.getInstance(facture, new FileOutputStream("facture_" + java.time.LocalDate.now() + "_" + nomClient + ".pdf"));
                     // Ouverture de notre document "facture" pour écrire à l'intérieur
                     facture.addTitle("Facture du " + java.time.LocalDate.now() + " à " + nomClient);
@@ -248,7 +247,7 @@ public class VentePAD extends javax.swing.JPanel {
                     facture.add(new Paragraph("Facture du " + java.time.LocalDate.now()));
                     facture.add(new Paragraph(" "));
                     facture.add(new LineSeparator());
-                    facture.add(new Paragraph("Client : " + nomClient));
+                    facture.add(new Paragraph("Client : " + infosFacture[4] + " " + infosFacture[5]));
                     facture.add(new Paragraph(" "));
                     facture.add(new LineSeparator());
                     PdfPTable tableauEntete = new PdfPTable(3);
@@ -256,12 +255,21 @@ public class VentePAD extends javax.swing.JPanel {
                     tableauEntete.setWidthPercentage(100);
                     tableauEntete.setSpacingBefore(10f);
                     tableauEntete.setSpacingAfter(10f);
+                    tableauCellule.setWidthPercentage(100);
+                    tableauCellule.setSpacingBefore(10f);
+                    tableauCellule.setSpacingAfter(10f);
                     PdfPCell nomProduitEntete = new PdfPCell(new Paragraph("Nom du produit"));
                     PdfPCell quantiteProduitEntete = new PdfPCell(new Paragraph("Quantité"));
                     PdfPCell sommeProduitEntete = new PdfPCell(new Paragraph("Prix à l'unité"));
+                    PdfPCell nomProduit = new PdfPCell(new Paragraph(infosFacture[1]));
+                    PdfPCell quantiteProduit = new PdfPCell(new Paragraph());
+                    PdfPCell sommeProduit = new PdfPCell(new Paragraph());
                     tableauEntete.addCell(nomProduitEntete);
                     tableauEntete.addCell(quantiteProduitEntete);
                     tableauEntete.addCell(sommeProduitEntete);
+                    tableauCellule.addCell(nomProduit);
+                    tableauCellule.addCell(quantiteProduit);
+                    tableauCellule.addCell(sommeProduit);
                     facture.add(tableauEntete);
                     facture.add(tableauCellule);
                     facture.close();
@@ -274,8 +282,10 @@ public class VentePAD extends javax.swing.JPanel {
             } else {
                 JOptionPane.showMessageDialog(this, "Vous devez sélectionner une vente dans la liste pour en faire la facture");
             }
-        } catch (DocumentException | FileNotFoundException ex) {
+        } catch (DocumentException ex) {
             ex.printStackTrace();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(VentePAD.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonGenererFactureActionPerformed
 
