@@ -75,7 +75,6 @@ public class GestionPAD extends javax.swing.JPanel {
         jComboBoxMPopulariteProduit = new javax.swing.JComboBox<>();
         jButtonAjoutProduit = new javax.swing.JButton();
         jButtonModifierProduit = new javax.swing.JButton();
-        jButtonAfficherListeProduit = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jListListeProduit = new javax.swing.JList<>();
         jButtonAjoutCategorie = new javax.swing.JButton();
@@ -428,13 +427,6 @@ public class GestionPAD extends javax.swing.JPanel {
             }
         });
 
-        jButtonAfficherListeProduit.setText("Recharger les produits");
-        jButtonAfficherListeProduit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAfficherListeProduitActionPerformed(evt);
-            }
-        });
-
         jListListeProduit.setModel(new DefaultListModel());
         jListListeProduit.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -457,10 +449,9 @@ public class GestionPAD extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonAfficherListeProduit, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                     .addComponent(jButtonModifierProduit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonAjoutProduit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonAjoutCategorie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonAjoutCategorie, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -478,8 +469,6 @@ public class GestionPAD extends javax.swing.JPanel {
                 .addComponent(jButtonAjoutProduit)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonModifierProduit)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonAfficherListeProduit)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -545,11 +534,6 @@ public class GestionPAD extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Veuillez séléctionner un produit à modifier", "Avertissement", 3);
         }
     }//GEN-LAST:event_jButtonModifierProduitActionPerformed
-
-    private void jButtonAfficherListeProduitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAfficherListeProduitActionPerformed
-        // Bouton pour actualiser la liste des produits
-        remplirListeProduit();
-    }//GEN-LAST:event_jButtonAfficherListeProduitActionPerformed
 
     private void jListListeProduitComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jListListeProduitComponentShown
 
@@ -680,7 +664,6 @@ public class GestionPAD extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAfficherListeProduit;
     private javax.swing.JButton jButtonAjoutCategorie;
     private javax.swing.JButton jButtonAjoutProduit;
     private javax.swing.JButton jButtonAjoutUnProduit;

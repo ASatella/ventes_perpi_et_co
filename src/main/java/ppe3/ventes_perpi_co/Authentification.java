@@ -404,11 +404,11 @@ public class Authentification extends javax.swing.JFrame {
 
     private void jButtonPreremplissageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPreremplissageActionPerformed
         // TODO add your handling code here:
-        jTextFieldNomServeur.setText("localhost");
+        jTextFieldNomServeur.setText("10.0.10.141");
         jTextFieldPort.setText("3306");
-        jTextFieldNomBDD.setText("ventes");
-        jTextFieldUtilisateurSGBD.setText("roota");
-        jPasswordFieldMdpSGBD.setText("roota");
+        jTextFieldNomBDD.setText("ppe3");
+        jTextFieldUtilisateurSGBD.setText("root");
+        jPasswordFieldMdpSGBD.setText("root");
     }//GEN-LAST:event_jButtonPreremplissageActionPerformed
 
     private void jButtonCreationUtilisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCreationUtilisateurActionPerformed

@@ -63,7 +63,6 @@ public class Actions extends javax.swing.JPanel {
         jPanelGestionAgent = new javax.swing.JPanel();
         jScrollPaneTableauAgent = new javax.swing.JScrollPane();
         jListListeAgent = new javax.swing.JList<>();
-        jButtonRechargerTableauAgent = new javax.swing.JButton();
 
         jDialogModifAgent.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jDialogModifAgent.setTitle("Ajout d'un produit");
@@ -277,32 +276,20 @@ public class Actions extends javax.swing.JPanel {
         );
         jScrollPaneTableauAgent.setViewportView(jListListeAgent);
 
-        jButtonRechargerTableauAgent.setText("Recharger la liste des agents");
-        jButtonRechargerTableauAgent.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRechargerTableauAgentActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanelGestionAgentLayout = new javax.swing.GroupLayout(jPanelGestionAgent);
         jPanelGestionAgent.setLayout(jPanelGestionAgentLayout);
         jPanelGestionAgentLayout.setHorizontalGroup(
             jPanelGestionAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelGestionAgentLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelGestionAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneTableauAgent, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
-                    .addGroup(jPanelGestionAgentLayout.createSequentialGroup()
-                        .addComponent(jButtonRechargerTableauAgent)
-                        .addGap(220, 371, Short.MAX_VALUE)))
+                .addComponent(jScrollPaneTableauAgent, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelGestionAgentLayout.setVerticalGroup(
             jPanelGestionAgentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelGestionAgentLayout.createSequentialGroup()
                 .addComponent(jScrollPaneTableauAgent, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonRechargerTableauAgent))
+                .addGap(29, 29, 29))
         );
 
         jTabbedPaneActions.addTab("Gestion des agents", jPanelGestionAgent);
@@ -369,11 +356,6 @@ public class Actions extends javax.swing.JPanel {
         }*/
     }//GEN-LAST:event_jButtonGenererJeuCategorieActionPerformed
 
-    private void jButtonRechargerTableauAgentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRechargerTableauAgentActionPerformed
-        // Bouton pour actualiser la liste des agents
-        this.remplirListeAgent();
-    }//GEN-LAST:event_jButtonRechargerTableauAgentActionPerformed
-
     private void jTabbedPaneActionsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPaneActionsMouseClicked
 
     }//GEN-LAST:event_jTabbedPaneActionsMouseClicked
@@ -438,7 +420,6 @@ public class Actions extends javax.swing.JPanel {
     private javax.swing.JButton jButtonGenererJeuCategorie;
     private javax.swing.JButton jButtonGenererJeuProduit;
     private javax.swing.JButton jButtonModifAgent;
-    private javax.swing.JButton jButtonRechargerTableauAgent;
     private javax.swing.JComboBox<String> jComboBoxMChoixProfil;
     private javax.swing.JDialog jDialogModifAgent;
     private javax.swing.JLabel jLabelErreurGenerationCategorie;

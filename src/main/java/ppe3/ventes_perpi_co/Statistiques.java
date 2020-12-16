@@ -33,18 +33,10 @@ public class Statistiques extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabelTotalProduitVendu = new javax.swing.JLabel();
-        jButtonActualiserMontant = new javax.swing.JButton();
         jLabelMontantProduitVendu = new javax.swing.JLabel();
         jLabelMontantSurUneAnnee = new javax.swing.JLabel();
 
         jLabelTotalProduitVendu.setText("Nombre total de produit vendu :");
-
-        jButtonActualiserMontant.setText("Actualiser les statistiques");
-        jButtonActualiserMontant.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonActualiserMontantActionPerformed(evt);
-            }
-        });
 
         jLabelMontantProduitVendu.setText("Montant total des produits vendus :");
 
@@ -59,7 +51,6 @@ public class Statistiques extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelMontantSurUneAnnee)
                     .addComponent(jLabelMontantProduitVendu)
-                    .addComponent(jButtonActualiserMontant)
                     .addComponent(jLabelTotalProduitVendu))
                 .addContainerGap(200, Short.MAX_VALUE))
         );
@@ -72,16 +63,9 @@ public class Statistiques extends javax.swing.JPanel {
                 .addComponent(jLabelMontantProduitVendu)
                 .addGap(18, 18, 18)
                 .addComponent(jLabelMontantSurUneAnnee)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addComponent(jButtonActualiserMontant)
-                .addContainerGap())
+                .addContainerGap(53, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButtonActualiserMontantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualiserMontantActionPerformed
-        // Bouton pour actualiser le nombre de ventes total
-        this.actualiserMontant();
-    }//GEN-LAST:event_jButtonActualiserMontantActionPerformed
 
     /**
      * Méthode servant à afficher la quantité totale des produits vendus, le
@@ -110,7 +94,6 @@ public class Statistiques extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonActualiserMontant;
     private javax.swing.JLabel jLabelMontantProduitVendu;
     private javax.swing.JLabel jLabelMontantSurUneAnnee;
     private javax.swing.JLabel jLabelTotalProduitVendu;

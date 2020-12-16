@@ -21,7 +21,6 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabelMontantSurUneAnnee" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabelMontantProduitVendu" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButtonActualiserMontant" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabelTotalProduitVendu" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="200" max="32767" attributes="0"/>
@@ -37,9 +36,7 @@
               <Component id="jLabelMontantProduitVendu" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabelMontantSurUneAnnee" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="19" max="32767" attributes="0"/>
-              <Component id="jButtonActualiserMontant" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="53" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -49,14 +46,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Nombre total de produit vendu :"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButtonActualiserMontant">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Actualiser les statistiques"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonActualiserMontantActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelMontantProduitVendu">
       <Properties>
