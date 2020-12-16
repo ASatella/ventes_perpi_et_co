@@ -209,7 +209,7 @@ public class VentePAD extends javax.swing.JPanel {
                             JOptionPane.showMessageDialog(this, "Vente ajoutée avec succès !");
                             System.out.println("Vente ajouté avec succès");
                             leModelVente.clear();
-                            ResultSet lesVentesQteProduit = DAO.getInstance().requeteSelection("SELECT libelle_produit, tarif_produit contenir.qte FROM contenir INNER JOIN produit ON contenir.id_produit = produit.id_produit");
+                            ResultSet lesVentesQteProduit = DAO.getInstance().requeteSelection("SELECT libelle_produit, contenir.qte FROM contenir INNER JOIN produit ON contenir.id_produit = produit.id_produit");
                             ResultSet lesVentesClients = DAO.getInstance().requeteSelection("SELECT client.nom, client.prenom, id_facture FROM vente INNER JOIN client ON vente.id_client = client.id_client");
                             while (lesVentesQteProduit.next() && lesVentesClients.next()) {
                                 leModelVente.addElement(lesVentesQteProduit.getString(1) + "  à été vendu  " + lesVentesQteProduit.getString(2) + "  fois à  " + lesVentesClients.getString(1) + "  " + lesVentesClients.getString(2) + "  le  " + lesVentesClients.getString(3));
